@@ -22,8 +22,8 @@
       </el-col>
       <el-col :span="10">
         <ul class="list-ul">
-          <li class="li-first">
-            <span>五年制简介</span>
+          <li class="li-first-more">
+            <span>更多</span>
           </li>
           <li v-for="item in lists" :key="item">
             <a href="javascript:;"> {{item.title}} </a>
@@ -32,9 +32,27 @@
         </ul>
       </el-col>
     </el-row>
+
+    <el-row type="flex" justify="space-around" class="list-special">
+       <el-col :span="7" v-for="item in specialList" :key="item">
+         <section>
+            <figure>
+              <img :src=item.img alt="">
+              <figcaption> {{item.title}} </figcaption>
+            </figure>
+            <article>
+              <p> {{item.introduction}} </p>
+            </article>
+            <div class="btn-more">
+              <a href="javascript:;">了解更多</a>
+            </div>
+         </section>
+       </el-col>
+    </el-row>
   </div>
 </template>
 <script>
+  import '../../assets/style/home.scss'
   export default {
     name: 'Home',
     data(){
@@ -58,6 +76,23 @@
             title: '计算机软件技术就业前景',
             time: '2017-05-09'
           }
+        ],
+        specialList: [
+          {
+            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
+            title: '中小学生英语培训课程',
+            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
+          },
+          {
+            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
+            title: '中小学生英语培训课程',
+            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
+          },
+          {
+            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
+            title: '中小学生英语培训课程',
+            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
+          }
         ]
       }
     },
@@ -66,64 +101,5 @@
   }
 </script>
 <style lang="scss" scoped>
-  img {
-    width: 100%;
-    height: 100%;
-    min-width: 100%;
-  }
-  .list-five {
-    margin: 30px auto auto auto;
-    display: flex;
-    justify-content: space-between;
-    width: 1000px;
-    .list-ul {
-      width:100%;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      li {
-        display: block;
-        height: 45px;
-        line-height: 45px;
-        padding: 5px;
-      }
-      .li-first {
-        border-bottom: 1px solid #ddd;
-        span {
-          color: #1e50ae;
-          font: 20px/150% 'Microsoft YaHei';
-          position: relative;
-          padding-left: 10px;
-          &:before {
-            content: "|";
-            position: absolute;
-            font-weight: 800;
-            top: -2px;
-            left: -5px;
-          }
-        }
-      }
-      li:not(.li-first) {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px dashed #ddd;
-        span {
-          display: block;
-          color: #666;
-          height: 36px;
-          line-height: 36px;
-        }
-        a {
-          display: block;
-          color: #666;
-          height: 36px;
-          line-height: 36px;
-          &:hover {
-            color: #e01f19 !important;
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
+  
 </style>
