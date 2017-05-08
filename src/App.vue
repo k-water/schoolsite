@@ -2,11 +2,13 @@
   <div id="app">
     <Headers></Headers>
     <router-view></router-view>
+    <Footers></Footers>
   </div>
 </template>
 
 <script>
 import Headers from './components/Headers'
+import Footers from './components/Footers'
 export default {
   name: 'app',
   data() {
@@ -15,7 +17,8 @@ export default {
     }
   },
   components: {
-    Headers
+    Headers,
+    Footers
   }
 }
 </script>
