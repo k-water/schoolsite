@@ -49,6 +49,34 @@
          </section>
        </el-col>
     </el-row>
+
+    <el-row type="flex" justify="space-around" class="info">
+      <el-col :span="8">
+        <ul class="list-ul">
+          <li class="li-first">
+            <span>就业信息</span>
+          </li>
+          <li v-for="item in info" :key="item">
+            <a href="javascript:;"> {{item.title}} </a>
+            <span> {{item.time}} </span>
+          </li>
+        </ul>
+      </el-col>
+      <el-col :span="14">
+        <ul class="list-ul">
+          <li class="li-first">
+            <span>校园环境</span>
+          </li>
+        </ul>
+        <ul class="list-img">
+          <li v-for="item in school" :key="item">
+            <a href="javascript:;">
+              <img :src=item.pic alt="">
+            </a>
+          </li>
+        </ul>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script>
@@ -93,6 +121,39 @@
             title: '中小学生英语培训课程',
             introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
           }
+        ],
+        info: [
+          {
+            title: '国际名校赛艇挑战赛我校首次亮...',
+            time: '2017-03-29'
+          },
+          {
+            title: '国际名校赛艇挑战赛我校首次亮...',
+            time: '2017-03-29'
+          },
+          {
+            title: '国际名校赛艇挑战赛我校首次亮...',
+            time: '2017-03-29'
+          },
+          {
+            title: '国际名校赛艇挑战赛我校首次亮...',
+            time: '2017-03-29'
+          },
+          {
+            title: '国际名校赛艇挑战赛我校首次亮...',
+            time: '2017-03-29'
+          }
+        ],
+        school: [
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/18474302-file_1494256718241_fec0.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/58463072-file_1494256740231_f999.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/19095252-file_1494256753800_103a3.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/52623529-file_1494256762435_1e65.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/61074003-file_1494256794249_8417.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/59500119-file_1494256805021_13783.jpg'}
+          // {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/94131071-file_1494256814327_86db.jpg'},
+          // {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/11261531-file_1494256822249_176dc.jpg'},
+          // {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/49990355-file_1494256829728_117b0.jpg'},
         ]
       }
     },
