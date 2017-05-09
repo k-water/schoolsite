@@ -26,6 +26,17 @@
         </section>
       </el-col>
     </div>
+
+    <div class="block">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage1"
+        :page-size="6"
+        layout="prev, pager, next, jumper"
+        :total="60">
+      </el-pagination>
+    </div>
   </div>
 </template>
 <script>
@@ -33,6 +44,10 @@
     name: 'Profession',
     data() {
       return {
+        currentPage1: 1,
+        currentPage2: 2,
+        currentPage3: 3,
+        currentPage4: 4,
         specialList: [
           {
             img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
@@ -68,7 +83,12 @@
       }
     },
     methods: {
-      
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChange(val) {
+        console.log(`当前页: ${val}`);
+      }
     }
   }
 </script>
@@ -125,5 +145,9 @@
         padding: 8px 25px 8px 25px;
       }
     }
+  }
+  .block {
+    width: 1000px;
+    margin: 0 auto;
   }
 </style>

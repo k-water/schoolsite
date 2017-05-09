@@ -31,6 +31,11 @@ export default {
   text-decoration: none;
   list-style: none;
 }
+.common-h {
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
 html,body {
   height: 100%;
   font-size: 14px;
