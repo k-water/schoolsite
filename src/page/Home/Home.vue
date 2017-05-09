@@ -1,9 +1,11 @@
 <template>
   <div id="Home">
     <el-row style="margin-top:10px">
-      <el-carousel :interval="3000" trigger="click" height="400px" :autoplay="false">
+      <el-carousel :interval="3000" trigger="click" height="400px" :autoplay="true">
         <el-carousel-item v-for="item in itemsImg" :key="item">
-          <img :src=item alt="">
+          <a href="javascript:;">
+            <img :src=item alt="">
+          </a>
         </el-carousel-item>
       </el-carousel>
     </el-row>
