@@ -46,7 +46,7 @@
     }
   }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .header-img {
     width: 980px;
     margin: 10px auto;
