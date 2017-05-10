@@ -27,7 +27,7 @@
             <span>文章列表</span>
           </li>
           <li v-for="item in info" :key="item">
-            <a href="javascript:;"> {{item.title}} </a>
+           <router-link :to="'/college/article/' + item.path">{{item.title}}</router-link>
             <span> {{item.time}} </span>
           </li>
         </ul>
@@ -44,23 +44,28 @@
         info: [
           {
             title: '国际名校赛艇挑战赛我校首次亮...国际名校赛艇挑战赛我校首次亮...国际名校赛艇挑战赛我校首次亮',
-            time: '2017-03-29'
+            time: '2017-03-29',
+            path: 'ssss'
           },
           {
             title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
+            time: '2017-03-29',
+            path: 'ssss'
           },
           {
             title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
+            time: '2017-03-29',
+            path: 'ssss'
           },
           {
             title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
+            time: '2017-03-29',
+            path: 'ssss'
           },
           {
             title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
+            time: '2017-03-29',
+            path: 'ssss'
           }
         ]
       }

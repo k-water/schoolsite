@@ -6,7 +6,7 @@ import College from '../page/College/College.vue'
 import Education from '../page/Education/Education.vue'
 import Cooperation from '../page/Cooperation/Cooperation.vue'
 import Apply from '../page/Apply/Apply.vue'
-
+import Art from '../page/College/Art.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -35,5 +35,11 @@ export default new Router({
     path: '/apply',
     name: 'Apply',
     component: Apply
+  }, {
+    path: '/college/article/:id',
+    component: Art
+  }, {
+    path: '*',
+    redirect: '/'
   }]
 })
