@@ -9,16 +9,16 @@
     </el-row>
 
     <div class="wrap">
-      <el-col :span="7" v-for="item in specialList" :key="item" class="list-col">
+      <el-col :span="7" v-for="item in specialList.content" :key="item" class="list-col">
         <section>
           <figure>
             <a href="javascript:;">
-              <img :src=item.img alt="">
+              <img :src=item.cover alt="">
             </a>
             <figcaption> {{item.title}} </figcaption>
           </figure>
           <article>
-            <p> {{item.introduction}} </p>
+            <p> {{removeHTMLTag(item.content)}} </p>
           </article>
           <div class="btn-more">
             <a href="javascript:;">了解更多</a>
@@ -32,61 +32,54 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page.sync="currentPage1"
-        :page-size="6"
+        :page-size="specialList.size"
         layout="prev, pager, next, jumper"
-        :total="60">
+        :total="specialList.totalElements">
       </el-pagination>
     </div>
   </div>
 </template>
 <script>
+  import {mapGetters,mapActions} from 'vuex'
   export default {
     name: 'Profession',
     data() {
       return {
         currentPage1: 1,
-        currentPage2: 2,
-        currentPage3: 3,
-        currentPage4: 4,
-        specialList: [
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
-          },
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
-          },
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
-          },
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
-          },
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
-          },
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
-          }
-        ]
+        size: 6,
+        type: 1
       }
     },
+    computed: {
+      ...mapGetters(['specialList'])
+    },
+    created() {
+      this.getProfessionList({
+        page: 0,
+        size: 6,
+        type: 1
+      })
+    },
     methods: {
+      ...mapActions(['getProfessionList']),
+      removeHTMLTag(str) {
+        str = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
+        str = str.replace(/[ | ]*\n/g,'\n'); //去除行尾空白
+        str = str.replace(/\n[\s| | ]*\r/g,'\n'); //去除多余空行
+        str=str.replace(/&nbsp;/ig,'');//去掉&nbsp;
+        str=str.replace(/\s/g,''); //将空格去掉
+        return str;
+      },
       handleSizeChange(val) {
+        this.size = val
         console.log(`每页 ${val} 条`);
       },
       handleCurrentChange(val) {
+        this.getProfessionList({
+          page: val - 1,
+          size: this.size,
+          type: this.type
+        })
         console.log(`当前页: ${val}`);
       }
     }
@@ -130,6 +123,10 @@
         color: rgb(166, 165, 165);
         line-height: 25px;
         padding: 0 0 0 5px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
       }
     }
     .btn-more {
