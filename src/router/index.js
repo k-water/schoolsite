@@ -7,10 +7,11 @@ import Education from '../page/Education/Education.vue'
 import Cooperation from '../page/Cooperation/Cooperation.vue'
 import Apply from '../page/Apply/Apply.vue'
 import Art from '../page/College/Art.vue'
+import Details from '@/page/Profession/Details.vue'
 Vue.use(Router)
 
+// hash 模式路由
 export default new Router({
-  mode: 'history',
   routes: [{
     path: '/',
     name: 'Home',
@@ -18,7 +19,16 @@ export default new Router({
   }, {
     path: '/profession',
     name: 'Profession',
-    component: Profession
+    component: Profession,
+    // children: [{
+    //   path: 'details/:id',
+    //   name: 'Details',
+    //   component: Datails
+    // }]
+  }, {
+    path: '/profession/details/:id',
+    name: 'Details',
+    component: Details
   }, {
     path: '/college',
     name: 'College',

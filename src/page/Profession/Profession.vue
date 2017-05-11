@@ -20,8 +20,8 @@
           <article>
             <p> {{removeHTMLTag(item.content)}} </p>
           </article>
-          <div class="btn-more">
-            <a href="javascript:;">了解更多</a>
+          <div class="btn-more" @click="getDetailsID(item.id)">
+            <router-link :to="'/profession/details/'+item.id">了解更多</router-link>
           </div>
         </section>
       </el-col>
@@ -51,7 +51,7 @@
       }
     },
     computed: {
-      ...mapGetters(['specialList'])
+      ...mapGetters(['specialList','pageId'])
     },
     created() {
       this.getProfessionList({
@@ -61,7 +61,7 @@
       })
     },
     methods: {
-      ...mapActions(['getProfessionList']),
+      ...mapActions(['getProfessionList','getDetailsID']),
       removeHTMLTag(str) {
         str = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
         str = str.replace(/[ | ]*\n/g,'\n'); //去除行尾空白
@@ -72,7 +72,6 @@
       },
       handleSizeChange(val) {
         this.size = val
-        console.log(`每页 ${val} 条`);
       },
       handleCurrentChange(val) {
         this.getProfessionList({
@@ -80,7 +79,6 @@
           size: this.size,
           type: this.type
         })
-        console.log(`当前页: ${val}`);
       }
     }
   }

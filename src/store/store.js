@@ -5,12 +5,21 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
-  specialList: []
+  specialList: [],
+  pageId: '',
+  professionDetails: []
 }
 
 const mutations = {
   [types.professionList](state, data) {
     state.specialList = data
+  },
+  [types.professionDetails](state, data) {
+    state.professionDetails = data
+  },
+  [types.getCurrentID](state, id) {
+    state.pageId = id
+    console.log(state.pageId)
   }
 }
 
