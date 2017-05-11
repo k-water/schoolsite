@@ -27,8 +27,8 @@
           <li class="li-first">
             <span>文章列表</span>
           </li>
-          <li v-for="item in info.content" :key="item">
-           <router-link :to="'/college/article/' + item.path">{{item.title}}</router-link>
+          <li v-for="item in info.content" :key="item" @click="getArtId(item.id)">
+           <router-link :to="'/college/article/' + item.id">{{item.title}}</router-link>
             <span> {{item.postedTime}} </span>
           </li>
         </ul>
@@ -38,7 +38,7 @@
             @current-change="handleCurrentChange"
             :current-page.sync="currentPage1"
             :page-size="info.size"
-            layout="prev, pager, next, jumper"
+            layout="total,prev, pager, next, jumper"
             :total="info.totalElements">
           </el-pagination>
         </div>
@@ -66,10 +66,10 @@
       })
     },
     computed: {
-      ...mapGetters(['info'])
+      ...mapGetters(['info', 'artId'])
     },
     methods: {
-      ...mapActions(['getInfoFive']),
+      ...mapActions(['getInfoFive', 'getArtId']),
       handleSizeChange(val) {
       },
       handleCurrentChange(val) {

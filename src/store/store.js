@@ -14,9 +14,12 @@ const state = {
 
   // 五年制大专
   info: [],
+  artDetails: [],
+  artId: '23'
 }
 
 const mutations = {
+  // 专业设置
   [types.professionList](state, data) {
     state.specialList = data
   },
@@ -27,8 +30,15 @@ const mutations = {
     state.pageId = id
   },
 
+  // 五年制
   [types.getInfo](state, data) {
     state.info = data
+  },
+  [types.getArtDetails](state, data) {
+    state.artDetails = data
+  },
+  [types.getArtId](state, id) {
+    state.artId = id
   }
 }
 

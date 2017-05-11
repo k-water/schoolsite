@@ -63,3 +63,18 @@ export const getInfoFive = ({ commit }, params) => {
     return console.log(err)
   })
 }
+
+export const getArtDetails = ({ commit }, objID) => {
+  axios({
+    method: 'get',
+    url: '/informations/' + objID.id
+  }).then((res) => {
+    commit(types.getArtDetails, res.data.data)
+  }).catch((err) => {
+    return console.log(err)
+  })
+}
+
+export const getArtId = ({ commit }, id) => {
+  commit(types.getArtId, id)
+}
