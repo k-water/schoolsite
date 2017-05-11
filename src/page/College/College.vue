@@ -21,57 +21,64 @@
           </div>
         </el-card>
       </el-col>
+
       <el-col :span="17" :offset="1">
         <ul class="list-ul">
           <li class="li-first">
             <span>文章列表</span>
           </li>
-          <li v-for="item in info" :key="item">
+          <li v-for="item in info.content" :key="item">
            <router-link :to="'/college/article/' + item.path">{{item.title}}</router-link>
-            <span> {{item.time}} </span>
+            <span> {{item.postedTime}} </span>
           </li>
         </ul>
+        <div class="block">
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page.sync="currentPage1"
+            :page-size="info.size"
+            layout="prev, pager, next, jumper"
+            :total="info.totalElements">
+          </el-pagination>
+        </div>
       </el-col>
     </el-row>
   </div>
 </template>
 <script>
+  import {mapActions,mapGetters} from 'vuex'
   export default {
     name: 'College',
     data() {
       return {
-        currentDate: new Date(),
-        info: [
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...国际名校赛艇挑战赛我校首次亮...国际名校赛艇挑战赛我校首次亮',
-            time: '2017-03-29',
-            path: 'ssss'
-          },
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29',
-            path: 'ssss'
-          },
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29',
-            path: 'ssss'
-          },
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29',
-            path: 'ssss'
-          },
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29',
-            path: 'ssss'
-          }
-        ]
+        currentPage1: 1,
+        size: 5,
+        type: 1,
+        currentDate: new Date().toString(),
       }
     },
+    created() {
+      this.getInfoFive({
+        page: 0,
+        size: 5,
+        type: 1
+      })
+    },
+    computed: {
+      ...mapGetters(['info'])
+    },
     methods: {
-      
+      ...mapActions(['getInfoFive']),
+      handleSizeChange(val) {
+      },
+      handleCurrentChange(val) {
+        this.getInfoFive({
+          page: val-1,
+          size: this.size,
+          type: this.type
+        })
+      }
     }
   }
 </script>
@@ -148,7 +155,12 @@
     font-size: 13px;
     color: #999;
   }
-  
+  .block {
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+  }
   .bottom {
     margin-top: 13px;
     line-height: 12px;

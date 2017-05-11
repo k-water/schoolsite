@@ -46,3 +46,20 @@ export const getDetails = ({ commit }, objID) => {
 export const getDetailsID = ({ commit }, id) => {
   commit(types.getCurrentID, id)
 }
+
+
+export const getInfoFive = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/informations',
+    params: {
+      page: params.page,
+      size: params.size,
+      type: params.type
+    }
+  }).then((res) => {
+    commit(types.getInfo, res.data.data)
+  }).catch((err) => {
+    return console.log(err)
+  })
+}

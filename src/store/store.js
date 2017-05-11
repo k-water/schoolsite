@@ -5,9 +5,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
+  // 专业设置
   specialList: [],
-  pageId: '',
-  professionDetails: []
+
+  // 页面刷新默认值
+  pageId: '34',
+  professionDetails: [],
+
+  // 五年制大专
+  info: [],
 }
 
 const mutations = {
@@ -19,6 +25,10 @@ const mutations = {
   },
   [types.getCurrentID](state, id) {
     state.pageId = id
+  },
+
+  [types.getInfo](state, data) {
+    state.info = data
   }
 }
 
