@@ -35,12 +35,9 @@ export const getProfessionDetails = ({ commit }) => {
 export const getDetails = ({ commit }, objID) => {
   axios({
     method: 'get',
-    url: '/subjects',
-    params: {
-      id: objID.id
-    }
+    url: '/subjects/' + objID.id,
   }).then((res) => {
-    commit(types.professionDetails, res.data.data.content)
+    commit(types.professionDetails, res.data.data)
   }).catch((err) => {
     return console.log(err)
   })

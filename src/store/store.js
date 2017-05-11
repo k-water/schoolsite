@@ -19,7 +19,6 @@ const mutations = {
   },
   [types.getCurrentID](state, id) {
     state.pageId = id
-    console.log(state.pageId)
   }
 }
 

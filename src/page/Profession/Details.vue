@@ -12,9 +12,9 @@
         </ul>
       </el-col>
       <el-col :span="14" :push="2" class="all-details">
-        <h1 class="title">{{ professionDetails[0].title }}</h1>
-        <img :src=professionDetails[0].cover alt="">
-        <div v-html="professionDetails[0].content" class="info">
+        <h1 class="title">{{ professionDetails.title }}</h1>
+        <img :src=professionDetails.cover alt="">
+        <div v-html="professionDetails.content" class="info">
         </div>
       </el-col>
     </el-row>
@@ -26,16 +26,15 @@ export default {
   name: 'Details',
   data() {
     return {
-      ID: this.pageId
     }
   },
   async mounted(){
     await this.getProfessionDetails()
-    console.log(this.$store.state)
-    await this.getDetails({
-      id: this.pageId.toString()
-    })
-    console.log(this.pageId.toString())
+    
+    setTimeout(()=>{
+      this.getDetails({
+      id: this.pageId
+    })},300)
   },
   computed: {
     ...mapGetters(['specialList','professionDetails','pageId'])
@@ -44,7 +43,7 @@ export default {
     ...mapActions(['getProfessionDetails','getDetails']),
     showDetails(id) {
       this.getDetails({
-        id: id.toString()
+        id: id
       })
     }
   }
