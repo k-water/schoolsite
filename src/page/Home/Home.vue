@@ -36,22 +36,28 @@
     </el-row>
 
     <el-row type="flex" justify="space-around" class="list-special">
-       <el-col :span="7" v-for="item in specialList" :key="item">
+       <el-col :span="7" v-for="item in specialList.content" :key="item">
          <section>
             <figure>
-              <img :src=item.img alt="">
+              <img :src=item.cover alt="">
               <figcaption> {{item.title}} </figcaption>
             </figure>
             <article>
-              <p> {{item.introduction}} </p>
+              <p> {{removeHTMLTag(item.content)}} </p>
             </article>
-            <div class="btn-more">
-              <a href="javascript:;">了解更多</a>
+            <div class="btn-more" @click="getDetailsID(item.id)">
+              <router-link :to="'/profession/details/'+item.id">了解更多</router-link>
             </div>
          </section>
        </el-col>
     </el-row>
-
+    <el-row class="common-h">
+      <footer class="more-pro">
+        <router-link to="/profession">
+          <span>查看更多专业</span>
+        </router-link>
+      </footer>
+    </el-row>
     <el-row type="flex" justify="space-around" class="info">
       <el-col :span="8">
         <ul class="list-ul">
@@ -83,6 +89,7 @@
 </template>
 <script>
   import '../../assets/style/home.scss'
+  import {mapActions,mapGetters} from 'vuex'
   export default {
     name: 'Home',
     data(){
@@ -105,23 +112,6 @@
           {
             title: '计算机软件技术就业前景',
             time: '2017-05-09'
-          }
-        ],
-        specialList: [
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
-          },
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
-          },
-          {
-            img: 'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true',
-            title: '中小学生英语培训课程',
-            introduction: '我们在线为学生提供实时互动的网络课程，根据学生的需求，兴趣爱好、级别、学习习惯与频率进行个性化课程匹配，全校外教师资....'
           }
         ],
         info: [
@@ -159,7 +149,26 @@
         ]
       }
     },
+    created() {
+      this.getProfessionList({
+        page: 0,
+        size: 3,
+        type: 1
+      })
+    },
+    computed: {
+      ...mapGetters(['specialList','pageId'])
+    },
     methods: {
+      ...mapActions(['getProfessionList','getDetailsID']),
+      removeHTMLTag(str) {
+        str = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
+        str = str.replace(/[ | ]*\n/g,'\n'); //去除行尾空白
+        str = str.replace(/\n[\s| | ]*\r/g,'\n'); //去除多余空行
+        str=str.replace(/&nbsp;/ig,'');//去掉&nbsp;
+        str=str.replace(/\s/g,''); //将空格去掉
+        return str;
+      }
     }
   }
 </script>

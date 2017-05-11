@@ -1,5 +1,5 @@
 <template>
-  <div id="details">
+  <div id="pDetails">
     <el-row class="common-h sidebar">
       <el-col :span="7">
         <ul class="list-ul">
@@ -31,10 +31,11 @@ export default {
   async mounted(){
     await this.getProfessionDetails()
     
+    // 延迟获取Profession页面传过来的pageId
     setTimeout(()=>{
       this.getDetails({
       id: this.pageId
-    })},300)
+    })},100)
   },
   computed: {
     ...mapGetters(['specialList','professionDetails','pageId'])
