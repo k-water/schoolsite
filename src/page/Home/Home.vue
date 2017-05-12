@@ -64,9 +64,9 @@
           <li class="li-first">
             <span>就业信息</span>
           </li>
-          <li v-for="item in infosss" :key="item">
-            <a href="javascript:;"> {{item.title}} </a>
-            <span> {{item.time}} </span>
+          <li v-for="item in jobInfo.content" :key="item" @click="getJobId(item.id)">
+            <router-link :to="'/college/jobInfo/' + item.id"> {{item.title}} </router-link>
+            <span> {{item.postedTime}} </span>
           </li>
         </ul>
       </el-col>
@@ -100,28 +100,6 @@
           'https://oc1gyfe6q.qnssl.com/0349c49cba94c9aea3f4a47a7e26735f.jpg?raw=true',
           'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true'
         ],
-        infosss: [
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
-          },
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
-          },
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
-          },
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
-          },
-          {
-            title: '国际名校赛艇挑战赛我校首次亮...',
-            time: '2017-03-29'
-          }
-        ],
         school: [
           {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/18474302-file_1494256718241_fec0.jpg'},
           {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/58463072-file_1494256740231_f999.jpg'},
@@ -133,27 +111,36 @@
       }
     },
     created() {
+      // 专业列表
       this.getProfessionList({
         page: 0,
         size: 3,
         type: 1
       })
+      // 五年制大专左
       this.getInfoFive({
         page: 0,
         size: 3,
         type: 1
       })
+      // 五年制大专右
       this.getMoreInfo({
         page: 1,
         size: 3,
         type: 1
+      }),
+      // 就业信息
+      this.getJobInfo({
+        page: 0,
+        size: 5,
+        type: 2
       })
     },
     computed: {
-      ...mapGetters(['specialList','pageId', 'info', 'moreInfo', 'artId'])
+      ...mapGetters(['specialList','pageId', 'info', 'moreInfo', 'artId', 'jobInfo'])
     },
     methods: {
-      ...mapActions(['getProfessionList','getDetailsID', 'getInfoFive', 'getMoreInfo', 'getArtId']),
+      ...mapActions(['getProfessionList','getDetailsID', 'getInfoFive', 'getMoreInfo', 'getArtId', 'getJobInfo', 'getJobId']),
       removeHTMLTag(str) {
         str = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
         str = str.replace(/[ | ]*\n/g,'\n'); //去除行尾空白

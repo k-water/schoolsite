@@ -96,3 +96,35 @@ export const getMoreInfo = ({ commit }, params) => {
     return console.log(err)
   })
 }
+
+// 就业信息
+export const getJobInfo = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/informations',
+    params: {
+      page: params.page,
+      size: params.size,
+      type: params.type
+    }
+  }).then((res) => {
+    commit(types.getJobInfo, res.data.data)
+  }).catch((err) => {
+    return console.log(err)
+  })
+}
+
+export const getJobInfoDetails = ({ commit }, objID) => {
+  axios({
+    method: 'get',
+    url: '/informations/' + objID.id
+  }).then((res) => {
+    commit(types.getJobInfoDetails, res.data.data)
+  }).catch((err) => {
+    return console.log(err)
+  })
+}
+
+export const getJobId = ({ commit }, id) => {
+  commit(types.getJobId, id)
+}

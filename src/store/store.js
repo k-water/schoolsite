@@ -18,7 +18,12 @@ const state = {
   artId: '23',
 
   // home
-  moreInfo: []
+  moreInfo: [],
+
+  // 就业信息
+  jobInfo: [],
+  jobDetails: [],
+  jobId: '52'
 }
 
 const mutations = {
@@ -47,6 +52,17 @@ const mutations = {
   // home
   [types.getMoreInfo](state, data) {
     state.moreInfo = data
+  },
+
+  // 就业信息
+  [types.getJobInfo](state, data) {
+    state.jobInfo = data
+  },
+  [types.getJobInfoDetails](state, data) {
+    state.jobDetails = data
+  },
+  [types.getJobId](state, id) {
+    state.jobId = id
   }
 }
 

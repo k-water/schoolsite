@@ -10,3 +10,8 @@ export const getArtId = 'getArtId'
 
 // home
 export const getMoreInfo = 'getMoreInfo'
+
+// 就业信息
+export const getJobInfo = 'getJobInfo'
+export const getJobInfoDetails = 'getJobInfoDetails'
+export const getJobId = 'getJobId'

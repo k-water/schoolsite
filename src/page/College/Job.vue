@@ -1,13 +1,13 @@
 <template>
-  <div id="art">
+  <div id="job">
     <el-row class="common-h sidebar-art">
       <el-col :span="8">
         <ul class="list-ul">
           <li class="li-first">
-            <span>五年制大专</span>
+            <span>就业信息</span>
           </li>
-          <li v-for="item in info.content" :key="item">
-            <a href="javascript:;" @click="showArtDetails(item.id)"> {{item.title}} </a>
+          <li v-for="item in jobInfo.content" :key="item">
+            <a href="javascript:;" @click="showJobDetails(item.id)"> {{item.title}} </a>
           </li>
         </ul>
         <div class="block">
@@ -15,20 +15,20 @@
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
             :current-page.sync="currentPage1"
-            :page-size="info.size"
+            :page-size="jobInfo.size"
             layout="total,prev, pager, next, jumper"
-            :total="info.totalElements">
+            :total="jobInfo.totalElements">
           </el-pagination>
         </div>
       </el-col>
 
       <el-col :span="15" :push="1" class="art-details">
-        <header>
-          <h2>{{artDetails.title}}</h2>
-          <span>文章发布于: <em>{{artDetails.postedTime}}</em></span>
-          <span>浏览次数: <em>{{artDetails.readCount}}</em></span>
+         <header>
+          <h2>{{jobDetails.title}}</h2>
+          <span>文章发布于: <em>{{jobDetails.postedTime}}</em></span>
+          <span>浏览次数: <em>{{jobDetails.readCount}}</em></span>
         </header>
-        <div v-html="artDetails.content" class="content"></div>
+        <div v-html="jobDetails.content" class="content"></div>
       </el-col>
     </el-row>
   </div>
@@ -37,32 +37,33 @@
 import {mapGetters,mapActions} from 'vuex'
 
 export default {
-  name: 'Art',
+  name: 'JobInfos',
   data() {
     return {
       currentPage1: 1,
       size: 20,
-      type: 1,
+      type: 2,
     }
   },
   async mounted() {
-    await this.getInfoFive({
+    await this.getJobInfo({
       page: 0,
       size: 20,
-      type: 1
+      type: 2
     })
+
     setTimeout(()=>{
-      this.getArtDetails({
-        id: this.artId
+      this.getJobInfoDetails({
+        id: this.jobId
       })
     },100)
   },
 
   computed: {
-    ...mapGetters(['info','artDetails', 'artId'])
+    ...mapGetters(['jobInfo', 'jobDetails', 'jobId'])
   },
   methods: {
-    ...mapActions(['getInfoFive','getArtDetails']),
+    ...mapActions(['getJobInfo', 'getJobInfoDetails']),
     handleSizeChange(val) {
     },
     handleCurrentChange(val) {
@@ -72,8 +73,8 @@ export default {
         type: this.type
       })
     },
-    showArtDetails(id) {
-      this.getArtDetails({
+    showJobDetails(id) {
+      this.getJobInfoDetails({
         id: id
       })
       // var stateObject = {id: id}
