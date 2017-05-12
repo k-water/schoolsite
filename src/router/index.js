@@ -9,6 +9,7 @@ import Apply from '@/page/Apply/Apply.vue'
 import Art from '@/page/College/Art.vue'
 import Details from '@/page/Profession/Details.vue'
 import JobInfos from '@/page/College/Job.vue'
+import Improve from '@/page/Education/Improve.vue'
 Vue.use(Router)
 
 // hash 模式路由
@@ -40,6 +41,13 @@ const router = new Router({
     path: '/education',
     name: 'Education',
     component: Education
+  }, {
+    path: '/education/improve/:id',
+    name: 'Improve',
+    component: Improve,
+    meta: {
+      scrollToTop: true
+    }
   }, {
     path: '/cooperation',
     name: 'Cooperation',

@@ -23,7 +23,10 @@ const state = {
   // 就业信息
   jobInfo: [],
   jobDetails: [],
-  jobId: '52'
+  jobId: '52',
+
+  // 学历提升
+  improveList: []
 }
 
 const mutations = {
@@ -63,6 +66,11 @@ const mutations = {
   },
   [types.getJobId](state, id) {
     state.jobId = id
+  },
+
+  // 学历提升
+  [types.improveList](state, data) {
+    state.improveList = data
   }
 }
 

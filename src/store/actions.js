@@ -128,3 +128,20 @@ export const getJobInfoDetails = ({ commit }, objID) => {
 export const getJobId = ({ commit }, id) => {
   commit(types.getJobId, id)
 }
+
+// 学历提升improve
+export const getImproveList = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/subjects',
+    params: {
+      page: params.page,
+      size: params.size,
+      type: params.type
+    }
+  }).then((res) => {
+    commit(types.improveList, res.data.data)
+  }).catch((err) => {
+    return console.log(err)
+  })
+}
