@@ -84,6 +84,11 @@
       align-items: center;
       li {
         font-size: 18px;
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }

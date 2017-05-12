@@ -35,7 +35,6 @@
 </template>
 <script>
 import {mapGetters,mapActions} from 'vuex'
-
 export default {
   name: 'JobInfos',
   data() {
@@ -45,10 +44,11 @@ export default {
       type: 2,
     }
   },
-  async mounted() {
+  async created() {
+    // this.pageTop()
     await this.getJobInfo({
       page: 0,
-      size: 20,
+      size: 999999,
       type: 2
     })
 
@@ -73,14 +73,17 @@ export default {
         type: this.type
       })
     },
+    // pageScroll() {
+    //   window.scrollBy(0,-10)
+    // },
+    // pageTop() {
+    //   var scrolldelay = setTimeout(this.pageScroll(),100)
+    //   if(document.documentElement.scrollTop==0) clearTimeout(scrolldelay)
+    // },
     showJobDetails(id) {
       this.getJobInfoDetails({
         id: id
       })
-      // var stateObject = {id: id}
-      // var title = "Wow Title "+id
-      // var newUrl = "/college/article/"+id
-      // history.pushState(stateObject,title,newUrl)
     }
   }
 }
