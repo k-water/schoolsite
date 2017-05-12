@@ -38,11 +38,13 @@
       }
       .li-first-more {
         border-bottom: 1px solid #ddd !important;
+        cursor: pointer;
         span {
           color: #1e50ae !important;
           font: 20px/150% 'Microsoft YaHei';
           position: relative;
           padding-left: 25px;
+          cursor: pointer;
           &:before {
             content: ">>";
             position: absolute;

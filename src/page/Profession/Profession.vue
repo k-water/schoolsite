@@ -33,7 +33,7 @@
         @current-change="handleCurrentChange"
         :current-page.sync="currentPage1"
         :page-size="specialList.size"
-        layout="prev, pager, next, jumper"
+        layout="total, prev, pager, next, jumper"
         :total="specialList.totalElements">
       </el-pagination>
     </div>

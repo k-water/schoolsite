@@ -15,7 +15,10 @@ const state = {
   // 五年制大专
   info: [],
   artDetails: [],
-  artId: '23'
+  artId: '23',
+
+  // home
+  moreInfo: []
 }
 
 const mutations = {
@@ -39,6 +42,11 @@ const mutations = {
   },
   [types.getArtId](state, id) {
     state.artId = id
+  },
+
+  // home
+  [types.getMoreInfo](state, data) {
+    state.moreInfo = data
   }
 }
 

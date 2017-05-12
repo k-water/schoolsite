@@ -16,20 +16,20 @@
           <li class="li-first">
             <span>五年制简介</span>
           </li>
-          <li v-for="item in lists" :key="item">
-            <a href="javascript:;"> {{item.title}} </a>
-            <span> {{item.time}} </span>
+          <li v-for="item in info.content" :key="item" @click="getArtId(item.id)">
+            <router-link :to="'/college/article/' + item.id"> {{item.title}} </router-link>
+            <span> {{item.postedTime}} </span>
           </li>
         </ul>
       </el-col>
       <el-col :span="10">
         <ul class="list-ul">
-          <li class="li-first-more">
+          <li class="li-first-more" @click="jump()">
             <span>更多</span>
           </li>
-          <li v-for="item in lists" :key="item">
-            <a href="javascript:;"> {{item.title}} </a>
-            <span> {{item.time}} </span>
+          <li v-for="item in moreInfo.content" :key="item" @click="getArtId(item.id)">
+            <router-link :to="'/college/article/' + item.id"> {{item.title}} </router-link>
+            <span> {{item.postedTime}} </span>
           </li>
         </ul>
       </el-col>
@@ -64,7 +64,7 @@
           <li class="li-first">
             <span>就业信息</span>
           </li>
-          <li v-for="item in info" :key="item">
+          <li v-for="item in infosss" :key="item">
             <a href="javascript:;"> {{item.title}} </a>
             <span> {{item.time}} </span>
           </li>
@@ -100,21 +100,7 @@
           'https://oc1gyfe6q.qnssl.com/0349c49cba94c9aea3f4a47a7e26735f.jpg?raw=true',
           'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true'
         ],
-        lists: [
-          {
-            title: '计算机软件技术就业前景',
-            time: '2017-05-09'
-          },
-          {
-            title: '计算机软件技术就业前景',
-            time: '2017-05-09'
-          },
-          {
-            title: '计算机软件技术就业前景',
-            time: '2017-05-09'
-          }
-        ],
-        info: [
+        infosss: [
           {
             title: '国际名校赛艇挑战赛我校首次亮...',
             time: '2017-03-29'
@@ -143,9 +129,6 @@
           {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/52623529-file_1494256762435_1e65.jpg'},
           {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/61074003-file_1494256794249_8417.jpg'},
           {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/59500119-file_1494256805021_13783.jpg'}
-          // {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/94131071-file_1494256814327_86db.jpg'},
-          // {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/11261531-file_1494256822249_176dc.jpg'},
-          // {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/49990355-file_1494256829728_117b0.jpg'},
         ]
       }
     },
@@ -155,12 +138,22 @@
         size: 3,
         type: 1
       })
+      this.getInfoFive({
+        page: 0,
+        size: 3,
+        type: 1
+      })
+      this.getMoreInfo({
+        page: 1,
+        size: 3,
+        type: 1
+      })
     },
     computed: {
-      ...mapGetters(['specialList','pageId'])
+      ...mapGetters(['specialList','pageId', 'info', 'moreInfo', 'artId'])
     },
     methods: {
-      ...mapActions(['getProfessionList','getDetailsID']),
+      ...mapActions(['getProfessionList','getDetailsID', 'getInfoFive', 'getMoreInfo', 'getArtId']),
       removeHTMLTag(str) {
         str = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
         str = str.replace(/[ | ]*\n/g,'\n'); //去除行尾空白
@@ -168,6 +161,11 @@
         str=str.replace(/&nbsp;/ig,'');//去掉&nbsp;
         str=str.replace(/\s/g,''); //将空格去掉
         return str;
+      },
+      jump() {
+        this.$router.push({
+          name: 'College'
+        })
       }
     }
   }

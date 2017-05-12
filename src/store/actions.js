@@ -2,6 +2,7 @@ import Vue from 'vue'
 import axios from '@/utils/http.js'
 import * as types from './mutation-types.js'
 
+// profession
 export const getProfessionList = ({ commit }, params) => {
   axios({
     method: 'get',
@@ -47,7 +48,7 @@ export const getDetailsID = ({ commit }, id) => {
   commit(types.getCurrentID, id)
 }
 
-
+// college
 export const getInfoFive = ({ commit }, params) => {
   axios({
     method: 'get',
@@ -77,4 +78,21 @@ export const getArtDetails = ({ commit }, objID) => {
 
 export const getArtId = ({ commit }, id) => {
   commit(types.getArtId, id)
+}
+
+// home
+export const getMoreInfo = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/informations',
+    params: {
+      page: params.page,
+      size: params.size,
+      type: params.type
+    }
+  }).then((res) => {
+    commit(types.getMoreInfo, res.data.data)
+  }).catch((err) => {
+    return console.log(err)
+  })
 }

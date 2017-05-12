@@ -35,6 +35,7 @@
 </template>
 <script>
 import {mapGetters,mapActions} from 'vuex'
+
 export default {
   name: 'Art',
   data() {
@@ -75,6 +76,10 @@ export default {
       this.getArtDetails({
         id: id
       })
+      var stateObject = {id: id}
+      var title = "Wow Title "+id
+      var newUrl = "/college/article/"+id
+      history.pushState(stateObject,title,newUrl)
     }
   }
 }
@@ -141,7 +146,8 @@ export default {
     .content {
       width: 100%;
       padding-top: 30px;
-      line-height: 190%;
+      line-height: 200%;
+      font-size: 16px;
     }
   }
 }
