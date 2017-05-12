@@ -19,3 +19,5 @@ export const jobId = (state) => state.jobId
 
 // 学历提升
 export const improveList = (state) => state.improveList
+export const improveDetails = (state) => state.improveDetails
+export const improveId = (state) => state.improveId

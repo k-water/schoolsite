@@ -18,3 +18,5 @@ export const getJobId = 'getJobId'
 
 // 学历提升improve
 export const improveList = 'improveList'
+export const getImproveDetails = 'getImproveDetails'
+export const getImproveId = 'getImproveId'

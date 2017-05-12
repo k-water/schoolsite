@@ -22,7 +22,7 @@
           <article>
             <p> {{removeHTMLTag(item.content)}} </p>
           </article>
-          <div class="btn-more">
+          <div class="btn-more" @click="getImproveId(item.id)">
             <router-link :to="'/education/improve/'+item.id">了解更多</router-link>
           </div>
         </section>
@@ -64,7 +64,7 @@ export default {
     ...mapGetters(['improveList'])
   },
   methods: {
-    ...mapActions(['getImproveList']),
+    ...mapActions(['getImproveList', 'getImproveId']),
     removeHTMLTag(str) {
       str = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
       str = str.replace(/[ | ]*\n/g,'\n'); //去除行尾空白

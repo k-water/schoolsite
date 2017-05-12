@@ -26,7 +26,9 @@ const state = {
   jobId: '52',
 
   // 学历提升
-  improveList: []
+  improveList: [],
+  improveDetails: [],
+  improveId: '61'
 }
 
 const mutations = {
@@ -71,6 +73,12 @@ const mutations = {
   // 学历提升
   [types.improveList](state, data) {
     state.improveList = data
+  },
+  [types.getImproveDetails](state, data) {
+    state.improveDetails = data
+  },
+  [types.getImproveId](state, id) {
+    state.improveId = id
   }
 }
 

@@ -145,3 +145,17 @@ export const getImproveList = ({ commit }, params) => {
     return console.log(err)
   })
 }
+export const getImproveDetails = ({ commit }, objID) => {
+  axios({
+    method: 'get',
+    url: '/subjects/' + objID.id
+  }).then((res) => {
+    commit(types.getImproveDetails, res.data.data)
+  }).catch((err) => {
+    return console.log(err)
+  })
+}
+
+export const getImproveId = ({ commit }, id) => {
+  commit(types.getImproveId, id)
+}
