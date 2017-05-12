@@ -116,15 +116,22 @@
     }
     article {
       p {
-        font-family: "Microsoft YaHei";
-        font-size: 14px;
-        color: rgb(166, 165, 165);
-        line-height: 25px;
-        padding: 0 0 0 5px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        overflow: hidden;
+          font-family: "Microsoft YaHei";
+          font-size: 14px;
+          color: rgb(166, 165, 165);
+          padding: 0 0 0 5px;
+          position: relative;
+          line-height: 1.8em;
+          /* 3 times the line-height to show 3 lines */
+          height: 5.4em;
+          overflow: hidden;
+      }
+      p::after {
+          content:"..";
+          font-weight:bold;
+          position:absolute;
+          bottom:0;
+          right:-1px;
       }
     }
     .btn-more {
