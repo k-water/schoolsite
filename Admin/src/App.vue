@@ -1,23 +1,61 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <Headers></Headers>
+    <Sidebar></Sidebar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Headers from './components/Headers.vue'
+import Sidebar from './components/Sidebar.vue'
 export default {
-  name: 'app'
+  name: 'app',
+  data() {
+    return {
+
+    }
+  },
+  components: {
+    Headers,
+    Sidebar
+  }
 }
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-size: 14px;
+  font-family: Helvetica Neue,Helvetica,microsoft yahei,arial,STHeiTi,sans-serif;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.content {
+  background: none repeat scroll 0 0 #fff;
+  position: absolute;
+  left: 250px;
+  right: 0;
+  top: 92px;
+  bottom: 0;
+  width: auto;
+  padding: 40px;
+  box-sizing: border-box;
+  overflow-y: scroll;
 }
 </style>
