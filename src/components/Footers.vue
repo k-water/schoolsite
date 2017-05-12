@@ -23,11 +23,11 @@
               <el-input v-model="formWord.phone" placeholder="手机"></el-input>
             </el-form-item>
             <el-form-item label="">
-              <el-input v-model="formWord.word" placeholder="备注"></el-input>
+              <el-input v-model="formWord.remark" placeholder="备注"></el-input>
             </el-form-item>
             </el-form-item>
             <el-form-item style="float: right">
-              <el-button type="primary">提交</el-button>
+              <el-button type="primary" @click="submitForm()">提交</el-button>
             </el-form-item>
           </el-form>
         </el-col>
@@ -36,6 +36,8 @@
   </div>
 </template>
 <script>
+  import axios from '../utils/http.js'
+  import qs from 'qs'
   export default {
     name: 'Footers',
     data() {
@@ -44,12 +46,27 @@
         formWord: {
           name: '',
           phone: '',
-          word: ''
+          remark: ''
         }
       }
     },
     methods: {
-
+      submitForm() {
+        axios.post('/visitorMessages', this.formWord).then(res => {
+          this.$notify({
+            title: res.data.message,
+            message: `提交${res.data.message}`,
+            type: 'success',
+            duration: 2000
+          });
+        }).catch(err => {
+          this.$notify({
+            title: res.data.message,
+            message: `提交${res.data.message}`,
+            type: 'error'
+          });
+        })
+      }
     }
   }
 </script>

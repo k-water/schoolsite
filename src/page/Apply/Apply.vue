@@ -21,29 +21,26 @@
       </el-col>
       <el-col :span="16" :offset="2" style="margin-top: 50px">
         <el-form :label-position="labelPosition" label-width="100px" :model="formApply" ref="formApply" :rules="rules">
-          <el-form-item label="姓名" prop="name">
-            <el-input v-model="formApply.name" placeholder="请填写您的姓名"></el-input>
+          <el-form-item label="姓名" prop="studentName">
+            <el-input v-model="formApply.studentName" placeholder="请填写您的姓名"></el-input>
           </el-form-item>
-          <el-form-item label="性别" prop="sex">
-            <el-radio-group v-model="formApply.sex">
+          <el-form-item label="性别" prop="gender">
+            <el-radio-group v-model="formApply.gender">
               <el-radio label="男"></el-radio>
               <el-radio label="女"></el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="籍贯" prop="address">
-            <el-input v-model="formApply.address" placeholder="请填写您的籍贯"></el-input>
+          <el-form-item label="手机" prop="phone">
+            <el-input v-model="formApply.phone" placeholder="请填写您的手机号码"></el-input>
           </el-form-item>
-          <el-form-item label="毕业中学" prop="school">
-            <el-input v-model="formApply.school" placeholder="请填写您毕业的中学"></el-input>
+          <el-form-item label="籍贯" prop="nativePlace">
+            <el-input v-model="formApply.nativePlace" placeholder="请填写您的籍贯"></el-input>
           </el-form-item>
-          <el-form-item label="身份证号码" prop="idcard">
-            <el-input v-model="formApply.idcard" placeholder="请填写您的身份证号码"></el-input>
+          <el-form-item label="毕业中学" prop="graduationSchool">
+            <el-input v-model="formApply.graduationSchool" placeholder="请填写您毕业的中学"></el-input>
           </el-form-item>
-          <el-form-item label="专业" prop="profession">
-            <el-select v-model="formApply.profession" placeholder="" style="width: 100%;">
-              <el-option label="专业一" value="sf"></el-option>
-              <el-option label="专业二" value="cs"></el-option>
-            </el-select>
+          <el-form-item label="身份证号码" prop="idCard">
+            <el-input v-model="formApply.idCard" placeholder="请填写您的身份证号码"></el-input>
           </el-form-item>
 
           <el-form-item label="备注" prop="remark">
@@ -60,6 +57,7 @@
   </div>
 </template>
 <script>
+  import axios from '../../utils/http.js'
   export default {
     name: 'Apply',
     data() {
@@ -73,6 +71,13 @@
       let checkSex = (rule,value,callback) => {
         if(!value) {
           return callback(new Error('请选择您的性别!'))
+        }else {
+          callback()
+        }
+      }
+      let checkPhone = (rule,value,callback) => {
+        if(!value) {
+          return callback(new Error('请填写您的手机号码!'))
         }else {
           callback()
         }
@@ -94,13 +99,6 @@
       let checkIdcard = (rule,value,callback) => {
         if(!value) {
           return callback(new Error('请输入您的身份证号码!'))
-        }else {
-          callback()
-        }
-      }
-      let checkProfession = (rule,value,callback) => {
-        if(!value) {
-          return callback(new Error('请选择您的专业!'))
         }else {
           callback()
         }
@@ -129,32 +127,32 @@
         ],
         labelPosition: 'left',
         formApply: {
-          name: '',
-          sex: '',
-          address: '',
-          school: '',
-          idcard: '',
-          profession: '',
+          studentName: '',
+          gender: '',
+          phone: '',
+          nativePlace: '',
+          graduationSchool: '',
+          idCard: '',
           remark: ''
         },
         rules: {
-          name: [
+          studentName: [
             {required: true, validator: checkName, tigger: 'blur'}
           ],
-          sex: [
+          gender: [
             {required: true, validator: checkSex, tigger: 'blur'}
           ],
-          address: [
+          phone: [
+            {required: true, validator: checkPhone, tigger: 'blur'}
+          ],
+          nativePlace: [
             {required: true, validator: checkAddress, tigger: 'blur'}
           ],
-          school: [
+          graduationSchool: [
             {required: true, validator: checkSchool, tigger: 'blur'}
           ],
-          idcard: [
+          idCard: [
             {required: true, validator: checkIdcard, tigger: 'blur'}
-          ],
-          profession: [
-            {required: true, validator: checkProfession, tigger: 'blur'}
           ],
           remark: [
             {required: true, validator: checkRemark, tigger: 'blur'}
@@ -166,11 +164,27 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!')
+            axios.post('/entryForms', this.formApply).then(res => {
+              this.$notify({
+                title: res.data.message,
+                message: `提交${res.data.message}`,
+                type: 'success',
+                duration: 2000
+              });
+            }).catch(err => {
+              this.$notify({
+                title: res.data.message,
+                message: `提交${res.data.message}`,
+                type: 'success',
+                duration: 2000
+              });
+            })
           } else {
-            this.$alert('表单验证失败', '提示', {
-              type: 'warning',
-              confirmButtonText: '确定',
+            this.$notify({
+              title: '错误',
+              message: `表单验证失败`,
+              type: 'error',
+              duration: 2000
             });
             return false
           }

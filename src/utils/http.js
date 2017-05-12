@@ -6,19 +6,19 @@ axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 axios.defaults.baseURL = 'http://112.74.93.190:8080'
 
 
-//POST传参序列化
+// POST传参序列化
 axios.interceptors.request.use((config) => {
   if (config.method === 'post') {
-    config.data = qs.stringify(config.data, { arrayFormat: 'brackets' });
+    config.data = JSON.stringify(config.data);
   }
   return config;
 }, (error) => {
   console.log("错误的传参");
   return Promise.reject(error);
 });
-//code状态码200判断
+// code状态码200判断
 axios.interceptors.response.use((res) => {
-  if (res.data.status != '0') {
+  if (res.data.code !== 0) {
     console.log(res.data.message);
     return Promise.reject(res);
   }
