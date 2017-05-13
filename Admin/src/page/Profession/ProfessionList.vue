@@ -70,14 +70,17 @@ export default {
     ...mapGetters(['professionList'])
   },
   methods: {
-    ...mapActions(['getProfessionList']),
+    ...mapActions(['getProfessionList', 'getEditProId']),
     jump() {
       this.$router.push({
         name: 'AddProfession'
       })
     },
     handleEdit(index, row) {
-      console.log(index, row);
+      this.getEditProId(row.id)
+      this.$router.push({
+        path: '/editprofession/' + row.id
+      })
     },
     handleDelete(index, row) {
       axios({

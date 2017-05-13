@@ -6,7 +6,10 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
   professionList: [],
-  improveList: []
+  improveList: [],
+
+  editProId: '',
+  editProDetails: []
 }
 
 const mutations = {
@@ -15,6 +18,13 @@ const mutations = {
   },
   [types.getImprove](state, data) {
     state.improveList = data
+  },
+
+  [types.getEditProId](state, id) {
+    state.editProId = id
+  },
+  [types.getEditProDetails](state, data) {
+    state.editProDetails = data
   }
 }
 

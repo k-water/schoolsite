@@ -15,6 +15,10 @@ const router = new Router({
     name: 'AddProfession',
     component: require('../page/Profession/AddProfession.vue')
   }, {
+    path: '/editProfession/:id',
+    name: 'EditProfession',
+    component: require('../page/Profession/EditProfession.vue')
+  }, {
     path: '/improvelist',
     name: 'ImproveList',
     component: require('../page/Profession/ImproveList.vue')

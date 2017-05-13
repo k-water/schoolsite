@@ -1,7 +1,7 @@
 <template>
-  <div id="profession">
-    <div class="content">
-      <h1>一般专业添加页面</h1>
+  <div id="editprofession">
+     <div class="content">
+      <h1>一般专业修改页面</h1>
       <el-form :label-position="labelPosition" label-width="80px" :model="form">
         <el-form-item label="文章标题">
           <el-input v-model="form.title"></el-input>
@@ -9,18 +9,16 @@
       </el-form>
 
       <!--图片上传-->
-      <el-upload
-        class="upload-demo"
-        drag
-        action="http://112.74.93.190:8080//upload"
-        :on-success="handleSuccess"
-        multiple>
-        <i class="el-icon-upload"></i>
-        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-        <div class="el-upload__tip" slot="tip">上传封面图片</div>
-      </el-upload>
-
-
+        <el-upload
+          class="upload-demo"
+          drag
+          action="http://112.74.93.190:8080//upload"
+          :on-success="handleSuccess"
+          multiple>
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+          <div class="el-upload__tip" slot="tip">上传封面图片</div>
+        </el-upload>
       <div>
         <div class="tips">
           <p>Tips / 点击图片可调整大小</p>
@@ -33,7 +31,7 @@
           </quill-editor>
           <div class="html ql-editor" v-html="content"></div>
         </div>
-         <el-button class="editor-btn" type="primary" @click="customButtonClick">提交</el-button>
+         <el-button class="editor-btn" type="primary" @click="proChange">修改</el-button>
          <el-button class="editor-btn" type="default" @click="reset">重置</el-button>
       </div>
     </div>
@@ -41,9 +39,9 @@
 </template>
 <script>
 import axios from '../../utils/http.js'
-
+import {mapGetters, mapActions} from 'vuex'
 export default {
-  name: 'Home',
+  name: 'EditPro',
   data() {
     return {
       cover: '',
@@ -68,35 +66,49 @@ export default {
       }
     }
   },
+  created() {
+    setTimeout(() => {
+      this.getEditProDetails({
+        id: this.editProId
+      })
+    },100)
+  },
+  mounted() {
+    setTimeout(() => {
+      this.form.title = this.editProDetails.title
+      this.content = this.editProDetails.content
+      this.cover = this.editProDetails.cover
+    },100)
+  },
   computed: {
+    ...mapGetters(['editProId', 'editProDetails']),
     editor() {
       return this.$refs.myTextEditor.quillEditor
     }
   },
-  mounted() {
-  },
   methods: {
-    handleSuccess(response, file, fileList) {
-      this.cover = response.data
-    },
-    customButtonClick() {
+    ...mapActions(['getEditProDetails']),
+    proChange() {
       let params = {
         title: this.form.title,
         cover: this.cover,
         content: this.content,
         type: this.type
       }
-      axios.post('/subjects', params).then((res) => {
+      axios.put('/subjects/' + this.editProDetails.id, params).then((res) => {
         if(res.data.code === 0) {
-          this.$message.success('添加成功')
+          this.$message.success('修改成功')
         }else {
-          this.$message.error('添加失败')
+          this.$message.error('修改失败')
         }
       }).catch((err) => {
         return console.log(err)
       })
       this.content = ''
       this.form.title = ''
+    },
+    handleSuccess(response, file, fileList) {
+      this.cover = response.data
     },
     reset() {
       this.content = ''
@@ -106,19 +118,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.tips {
-  background: #eef1f6;
-  margin: 20px 0;
-  width: 100%;
-  height: 100%;
-
-  p {
-    height: 50px;
-    line-height: 50px;
-    font-size: 14px;
-    color: black;
-    padding: 0 0 0 20px;
-  }
-}
 </style>
 

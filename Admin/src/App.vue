@@ -76,4 +76,7 @@ body {
   border-top: none;
   resize: vertical;
 }
+.editor-btn {
+  margin-top: 20px !important;
+}
 </style>
