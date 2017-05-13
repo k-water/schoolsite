@@ -45,7 +45,6 @@ export default {
     }
   },
   async created() {
-    // this.pageTop()
     await this.getJobInfo({
       page: 0,
       size: 999999,
@@ -73,13 +72,6 @@ export default {
         type: this.type
       })
     },
-    // pageScroll() {
-    //   window.scrollBy(0,-10)
-    // },
-    // pageTop() {
-    //   var scrolldelay = setTimeout(this.pageScroll(),100)
-    //   if(document.documentElement.scrollTop==0) clearTimeout(scrolldelay)
-    // },
     showJobDetails(id) {
       this.getJobInfoDetails({
         id: id
@@ -138,6 +130,7 @@ export default {
     }
   }
   .block {
+    width: 100%;
     padding: 20px;
     display: flex;
     justify-content: center;

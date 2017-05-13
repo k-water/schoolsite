@@ -76,10 +76,6 @@ export default {
       this.getArtDetails({
         id: id
       })
-      // var stateObject = {id: id}
-      // var title = "Wow Title "+id
-      // var newUrl = "/college/article/"+id
-      // history.pushState(stateObject,title,newUrl)
     }
   }
 }
@@ -134,6 +130,7 @@ export default {
     }
   }
   .block {
+    width: 100%;
     padding: 20px;
     display: flex;
     justify-content: center;
