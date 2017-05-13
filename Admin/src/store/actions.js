@@ -49,3 +49,18 @@ export const getEditProDetails = ({ commit }, params) => {
     return console.log(err)
   })
 }
+
+export const getEditImproveId = ({ commit }, id) => {
+  commit(types.getEditImproveId, id)
+}
+
+export const getEditImproveDetails = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/subjects/' + params.id
+  }).then(res => {
+    commit(types.getEditImproveDetails, res.data.data)
+  }).catch(err => {
+    return console.log(err)
+  })
+}

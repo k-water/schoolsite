@@ -23,6 +23,10 @@ const router = new Router({
     name: 'ImproveList',
     component: require('../page/Profession/ImproveList.vue')
   }, {
+    path: '/editimprove/:id',
+    name: 'EditImprove',
+    component: require('../page/Profession/EditImprove.vue')
+  }, {
     path: '/addimprove',
     name: 'AddImprove',
     component: require('../page/Profession/AddImprove.vue')

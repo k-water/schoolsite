@@ -70,14 +70,17 @@ export default {
     ...mapGetters(['improveList'])
   },
   methods: {
-    ...mapActions(['getImproveList']),
+    ...mapActions(['getImproveList', 'getEditImproveId']),
     jump() {
       this.$router.push({
         name: 'AddImprove'
       })
     },
     handleEdit(index, row) {
-      console.log(index, row);
+      this.getEditImproveId(row.id)
+      this.$router.push({
+        path: '/editimprove/' + row.id
+      })
     },
     handleDelete(index, row) {
       axios({

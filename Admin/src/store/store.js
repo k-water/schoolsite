@@ -9,7 +9,10 @@ const state = {
   improveList: [],
 
   editProId: '',
-  editProDetails: []
+  editProDetails: [],
+
+  editImproveId: '',
+  editImproveDetails: []
 }
 
 const mutations = {
@@ -25,6 +28,13 @@ const mutations = {
   },
   [types.getEditProDetails](state, data) {
     state.editProDetails = data
+  },
+
+  [types.getEditImproveId](state, id) {
+    state.editImproveId = id
+  },
+  [types.getEditImproveDetails](state, data) {
+    state.editImproveDetails = data
   }
 }
 
