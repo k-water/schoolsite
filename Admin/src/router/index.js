@@ -11,6 +11,10 @@ const router = new Router({
     name: 'Profession',
     component: require('../page/Profession/Profession.vue')
   }, {
+    path: '/improve',
+    name: 'Improve',
+    component: require('../page/Profession/Improve.vue')
+  }, {
     path: '/infoManage',
     name: 'InfoManage',
     component: require('../page/Info/Info.vue')

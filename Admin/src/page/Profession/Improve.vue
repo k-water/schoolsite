@@ -1,7 +1,7 @@
 <template>
-  <div id="profession">
+  <div id="improve">
     <div class="content">
-      <h1>一般专业添加页面</h1>
+      <h1>学历提升专业添加页面</h1>
       <el-form :label-position="labelPosition" label-width="80px" :model="form">
         <el-form-item label="文章标题">
           <el-input v-model="form.title"></el-input>
@@ -55,7 +55,7 @@ export default {
     return {
       cover: '',
       content: '',
-      type: 1,
+      type: 2,
       form: {
         title: ''
       },

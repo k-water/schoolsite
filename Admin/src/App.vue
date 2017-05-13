@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -57,6 +57,10 @@ body {
   padding: 40px;
   box-sizing: border-box;
   overflow-y: scroll;
+  h1 {
+    margin: 20px auto;
+    text-align: center;
+  }
 }
 
 .ql-container .ql-editor {
