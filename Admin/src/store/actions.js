@@ -2,6 +2,7 @@ import Vue from 'vue'
 import axios from '@/utils/http.js'
 import * as types from './mutation-types.js'
 
+// 专业管理
 export const getProfessionList = ({ commit }, params) => {
   axios({
     method: 'get',
@@ -60,6 +61,38 @@ export const getEditImproveDetails = ({ commit }, params) => {
     url: '/subjects/' + params.id
   }).then(res => {
     commit(types.getEditImproveDetails, res.data.data)
+  }).catch(err => {
+    return console.log(err)
+  })
+}
+
+// 信息管理
+export const getInfoFiveList = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/informations',
+    params: {
+      page: params.page,
+      size: params.size,
+      type: params.type
+    }
+  }).then(res => {
+    commit(types.getInfoFive, res.data.data)
+  }).catch(err => {
+    return console.log(err)
+  })
+}
+
+export const getEditInfoFiveId = ({ commit }, id) => {
+  commit(types.getEditInfoFiveId, id)
+}
+
+export const getEditInfoFiveDetails = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/informations/' + params.id
+  }).then(res => {
+    commit(types.getEditInfoFiveDetails, res.data.data)
   }).catch(err => {
     return console.log(err)
   })

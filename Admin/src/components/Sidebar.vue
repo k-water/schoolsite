@@ -8,9 +8,13 @@
           <el-menu-item index="/improvelist">学历提升</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="/infoManage">
-        <i class="el-icon-message"></i>信息管理
-      </el-menu-item>
+      <el-submenu index="2">
+        <template slot="title"><i class="el-icon-message"></i>信息管理</template>
+        <el-menu-item-group>
+          <el-menu-item index="/infoFiveManage">五年制大专信息</el-menu-item>
+          <el-menu-item index="/infoJobManage">就业信息</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
       <el-menu-item index="/entryManage">
         <i class="el-icon-message"></i>报名管理
       </el-menu-item>
