@@ -16,3 +16,6 @@ export const getEditInfoFiveDetails = 'getEditInfoFiveDetails'
 export const getJobInfo = 'getJobInfo'
 export const getJobInfoId = 'getJobInfoId'
 export const getJobInfoDetails = 'getJobInfoDetails'
+
+// 报名管理
+export const getEntryInfo = 'getEntryInfo'

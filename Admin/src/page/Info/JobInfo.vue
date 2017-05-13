@@ -2,7 +2,7 @@
   <div id="jopinfo">
     <div class="content">
       <div class="add">
-        <el-button type="primary" icon="edit" size="large" @click="jump()">添加五年制大专信息</el-button>
+        <el-button type="primary" icon="edit" size="large" @click="jump()">添加就业信息</el-button>
       </div>
 
       <el-table

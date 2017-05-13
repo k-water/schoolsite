@@ -128,3 +128,19 @@ export const getJobInfoDetails = ({ commit }, params) => {
     return console.log(err)
   })
 }
+
+// 报名管理
+export const getEntryInfoList = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/entryForms',
+    params: {
+      page: params.page,
+      size: params.size
+    }
+  }).then(res => {
+    commit(types.getEntryInfo, res.data.data)
+  }).catch(err => {
+    return console.log(err)
+  })
+}

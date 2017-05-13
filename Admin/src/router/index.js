@@ -57,7 +57,7 @@ const router = new Router({
   }, {
     path: '/entryManage',
     name: 'EntryManage',
-    component: require('../page/Entry/Entrt.vue')
+    component: require('../page/Entry/Entry.vue')
   }, {
     path: '/messageManage',
     name: 'MessageManage',

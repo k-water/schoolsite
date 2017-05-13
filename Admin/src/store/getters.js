@@ -16,3 +16,6 @@ export const editInfoFiveDetails = state => state.editInfoFiveDetails
 export const jobInfo = state => state.jobInfo
 export const jobInfoId = state => state.jobInfoId
 export const jobInfoDetails = state => state.jobInfoDetails
+
+// 报名管理
+export const entryInfo = state => state.entryInfo

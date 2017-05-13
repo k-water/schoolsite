@@ -22,7 +22,10 @@ const state = {
 
   jobInfo: [],
   jobInfoId: '',
-  jobInfoDetails: []
+  jobInfoDetails: [],
+
+  // 报名管理
+  entryInfo: []
 }
 
 const mutations = {
@@ -67,6 +70,11 @@ const mutations = {
   },
   [types.getJobInfoDetails](state, data) {
     state.jobInfoDetails = data
+  },
+
+  // 报名管理
+  [types.getEntryInfo](state, data) {
+    state.entryInfo = data
   }
 }
 
