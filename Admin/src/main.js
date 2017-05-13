@@ -7,6 +7,9 @@ import router from './router'
 import axios from './utils/http.js'
 import store from './store/store.js'
 
+import VueQuillEditor from 'vue-quill-editor'
+Vue.use(VueQuillEditor)
+
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI)

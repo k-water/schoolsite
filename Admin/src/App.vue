@@ -58,4 +58,18 @@ body {
   box-sizing: border-box;
   overflow-y: scroll;
 }
+
+.ql-container .ql-editor {
+  min-height: 25em !important;
+  padding-bottom: 1em !important;
+  max-height: 30em !important;
+}
+.html {
+  min-height: 15em;
+  max-height: 20em;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-top: none;
+  resize: vertical;
+}
 </style>
