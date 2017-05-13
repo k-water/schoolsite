@@ -18,7 +18,11 @@ const state = {
   // 信息管理
   infoFive: [],
   editInfoFiveId: '',
-  editInfoFiveDetails: []
+  editInfoFiveDetails: [],
+
+  jobInfo: [],
+  jobInfoId: '',
+  jobInfoDetails: []
 }
 
 const mutations = {
@@ -53,6 +57,16 @@ const mutations = {
   },
   [types.getEditInfoFiveDetails](state, data) {
     state.editInfoFiveDetails = data
+  },
+
+  [types.getJobInfo](state, data) {
+    state.jobInfo = data
+  },
+  [types.getJobInfoId](state, id) {
+    state.jobInfoId = id
+  },
+  [types.getJobInfoDetails](state, data) {
+    state.jobInfoDetails = data
   }
 }
 

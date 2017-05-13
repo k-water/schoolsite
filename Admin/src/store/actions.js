@@ -97,3 +97,34 @@ export const getEditInfoFiveDetails = ({ commit }, params) => {
     return console.log(err)
   })
 }
+
+export const getJobInfoList = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/informations',
+    params: {
+      page: params.page,
+      size: params.size,
+      type: params.type
+    }
+  }).then(res => {
+    commit(types.getJobInfo, res.data.data)
+  }).catch(err => {
+    return console.log(err)
+  })
+}
+
+export const getJobInfoId = ({ commit }, id) => {
+  commit(types.getJobInfoId, id)
+}
+
+export const getJobInfoDetails = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/informations/' + params.id
+  }).then(res => {
+    commit(types.getJobInfoDetails, res.data.data)
+  }).catch(err => {
+    return console.log(err)
+  })
+}

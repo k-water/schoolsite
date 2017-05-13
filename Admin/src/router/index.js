@@ -35,13 +35,21 @@ const router = new Router({
     name: 'InfoFiveManage',
     component: require('../page/Info/FiveInfo.vue')
   }, {
-    path: '/addInfoFive/:id',
+    path: '/addInfoFive',
     name: 'AddInfoFive',
     component: require('../page/Info/AddFiveInfo.vue')
   }, {
     path: '/infoJobManage',
     name: 'InfoJobManage',
     component: require('../page/Info/JobInfo.vue')
+  }, {
+    path: '/addJobInfo',
+    name: 'AddJobInfo',
+    component: require('../page/Info/AddJobInfo.vue')
+  }, {
+    path: '/editJobInfo/:id',
+    name: 'EditJobInfo',
+    component: require('../page/Info/EditJobInfo.vue')
   }, {
     path: '/editInfoFive/:id',
     name: 'EditInfoFive',

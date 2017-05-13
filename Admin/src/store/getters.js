@@ -12,3 +12,7 @@ export const editImproveDetails = state => state.editImproveDetails
 export const infoFive = state => state.infoFive
 export const editInfoFiveId = state => state.editInfoFiveId
 export const editInfoFiveDetails = state => state.editInfoFiveDetails
+
+export const jobInfo = state => state.jobInfo
+export const jobInfoId = state => state.jobInfoId
+export const jobInfoDetails = state => state.jobInfoDetails

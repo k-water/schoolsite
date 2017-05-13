@@ -12,3 +12,7 @@ export const getEditImproveDetails = 'getEditImproveDetails'
 export const getInfoFive = 'getInfoFive'
 export const getEditInfoFiveId = 'getEditInfoFiveId'
 export const getEditInfoFiveDetails = 'getEditInfoFiveDetails'
+
+export const getJobInfo = 'getJobInfo'
+export const getJobInfoId = 'getJobInfoId'
+export const getJobInfoDetails = 'getJobInfoDetails'
