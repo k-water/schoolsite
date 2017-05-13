@@ -8,16 +8,20 @@ const router = new Router({
   mode: 'history',
   routes: [{
     path: '/',
-    name: 'Profession',
-    component: require('../page/Profession/Profession.vue')
-  }, {
-    path: '/improve',
-    name: 'Improve',
-    component: require('../page/Profession/Improve.vue')
-  }, {
-    path: '/professlist',
     name: 'ProList',
     component: require('../page/Profession/ProfessionList.vue')
+  }, {
+    path: '/addprofession',
+    name: 'AddProfession',
+    component: require('../page/Profession/AddProfession.vue')
+  }, {
+    path: '/improvelist',
+    name: 'ImproveList',
+    component: require('../page/Profession/ImproveList.vue')
+  }, {
+    path: '/addimprove',
+    name: 'AddImprove',
+    component: require('../page/Profession/AddImprove.vue')
   }, {
     path: '/infoManage',
     name: 'InfoManage',

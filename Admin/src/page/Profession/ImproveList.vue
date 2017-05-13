@@ -5,7 +5,7 @@
         <el-button type="primary" icon="edit" size="large" @click="jump()">添加专业</el-button>
       </div>
       <el-table
-        :data="professionList.content"
+        :data="improveList.content"
         border
         style="width: 100%"
         :default-sort = "{prop: 'date', order: 'descending'}"
@@ -41,9 +41,9 @@
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :current-page.sync="currentPage"
-          :page-size="professionList.size"
+          :page-size="improveList.size"
           layout="total, prev, pager, next, jumper"
-          :total="professionList.totalElements">
+          :total="improveList.totalElements">
         </el-pagination>
       </div>
     </div>
@@ -60,20 +60,20 @@ export default {
     }
   },
   created() {
-    this.getProfessionList({
+    this.getImproveList({
       page: 0,
       size: 10,
-      type: 1
+      type: 2
     })
   },
   computed: {
-    ...mapGetters(['professionList'])
+    ...mapGetters(['improveList'])
   },
   methods: {
-    ...mapActions(['getProfessionList']),
+    ...mapActions(['getImproveList']),
     jump() {
       this.$router.push({
-        name: 'AddProfession'
+        name: 'AddImprove'
       })
     },
     handleEdit(index, row) {
@@ -92,17 +92,17 @@ export default {
       }).catch(err => {
         return console.log(err)
       })
-      this.professionList.content.splice(index, 1)
+      this.improveList.content.splice(index, 1)
     },
 
     handleSizeChange(val) {
       
     },
     handleCurrentChange(val) {
-      this.getProfessionList({
+      this.getImproveList({
         page: val-1,
         size: 10,
-        type: 1
+        type: 2
       })
     }
   }
@@ -113,10 +113,5 @@ export default {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
-}
-.add {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
 }
 </style>

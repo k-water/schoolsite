@@ -5,12 +5,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
-  professionList: []
+  professionList: [],
+  improveList: []
 }
 
 const mutations = {
   [types.getProfession](state, data) {
     state.professionList = data
+  },
+  [types.getImprove](state, data) {
+    state.improveList = data
   }
 }
 
