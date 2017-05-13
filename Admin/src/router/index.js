@@ -15,6 +15,10 @@ const router = new Router({
     name: 'Improve',
     component: require('../page/Profession/Improve.vue')
   }, {
+    path: '/professlist',
+    name: 'ProList',
+    component: require('../page/Profession/ProfessionList.vue')
+  }, {
     path: '/infoManage',
     name: 'InfoManage',
     component: require('../page/Info/Info.vue')

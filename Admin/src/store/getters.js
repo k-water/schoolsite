@@ -1,0 +1,1 @@
+export const professionList = state => state.professionList

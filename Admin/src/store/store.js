@@ -5,11 +5,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
-
+  professionList: []
 }
 
 const mutations = {
-
+  [types.getProfession](state, data) {
+    state.professionList = data
+  }
 }
 
 export default new Vuex.Store({

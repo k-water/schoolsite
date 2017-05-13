@@ -5,6 +5,7 @@
         <template slot="title"><i class="el-icon-message"></i>专业管理</template>
         <el-menu-item-group>
           <el-menu-item index="/">一般专业</el-menu-item>
+          <el-menu-item index="/professlist">一般专业列表</el-menu-item>
           <el-menu-item index="/improve">学历提升</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
