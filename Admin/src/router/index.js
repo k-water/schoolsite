@@ -5,11 +5,15 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: [{
       path: '/login',
       name: 'Login',
       component: require('../page/Login/Login.vue')
+    }, {
+      path: '/changePassword',
+      name: 'ChangePassword',
+      component: require('../page/Login/ChangePassword.vue')
     }, {
       path: '/',
       name: 'Home',
@@ -82,6 +86,10 @@ const router = new Router({
       path: '/',
       redirect: '/login'
     },
+    {
+      path: '*',
+      redirect: '/'
+    }
   ]
 })
 router.beforeEach((to, from, next) => {

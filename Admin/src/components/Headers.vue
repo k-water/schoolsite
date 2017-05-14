@@ -9,6 +9,7 @@
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item command="loginout">退出</el-dropdown-item>
+                    <el-dropdown-item command="changePassword">修改密码</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -34,6 +35,10 @@ export default {
         localStorage.removeItem('token')
         this.$router.push('/login');
         this.$message.success('登出成功')
+      }else {
+        this.$router.push({
+          name: 'ChangePassword'
+        })
       }
     }
   }
