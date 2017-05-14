@@ -1,60 +1,83 @@
 <template>
-  <div id="headers">
-    <el-row>
-      <el-col :span="10" class="header">
-        <div class="grid-content bg-purple-dark">
-          <h1>后台管理系统</h1>
+    <div class="header">
+        <div class="logo">后台管理系统</div>
+        <div class="user-info">
+            <el-dropdown trigger="click" @command="handleCommand">
+                <span class="el-dropdown-link">
+                    <img class="user-logo" src="https://oc1gyfe6q.qnssl.com/17-5-14/1766259-file_1494735394616_16163.jpg">
+                    {{username}}
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item command="loginout">退出</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
         </div>
-      </el-col>
-      <el-col :span="10" :push="4">
-        <div class="grid-content bg-purple-dark">
-          
-        </div>
-      </el-col>
-    </el-row>
-  </div>
+    </div>
 </template>
 <script>
 export default {
-  name: 'Headers',
   data() {
     return {
-
+      name: 'admin'
     }
   },
-  computed: {
-
+  computed:{
+    username(){
+      let username = localStorage.getItem('username');
+      return username ? username : this.name;
+    }
   },
-  methods: {
-
+  methods:{
+    handleCommand(command) {
+      if(command == 'loginout'){
+        localStorage.removeItem('username')
+        localStorage.removeItem('token')
+        this.$router.push('/login');
+        this.$message.success('登出成功')
+      }
+    }
   }
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 .header {
-  padding: 18px;
-  color: whitesmoke;
-  font-family: 'microsoft yahei ui';
-  .grid-content {
-    border-radius: 4px;
-    h1 {
-      font-size: 2em;
-      line-height: 2em;
-    }
-  }
-}
-.el-row {
-  margin-bottom: 20px;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 70px;
+  font-size: 22px;
+  line-height: 70px;
+  color: #fff;
   background-color: #242f42;
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
-.el-col {
-  border-radius: 4px;
+.header .logo{
+  float: left;
+  width:250px;
+  text-align: center;
 }
-.bg-purple-dark {
-  background-color: #242f42;
+.user-info {
+  float: right;
+  padding-right: 50px;
+  font-size: 16px;
+  color: #fff;
+}
+.user-info .el-dropdown-link{
+  position: relative;
+  display: inline-block;
+  padding-left: 50px;
+  color: #fff;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.user-info .user-logo{
+  position: absolute;
+  left:0;
+  top:15px;
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+}
+.el-dropdown-menu__item{
+  text-align: center;
 }
 </style>
-

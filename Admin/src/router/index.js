@@ -86,7 +86,6 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   let token = localStorage.getItem('token')
-  console.log(token)
   if (to.meta.requireAuth) {
     if (token) {
       next()

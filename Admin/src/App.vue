@@ -43,7 +43,7 @@ body {
   position: absolute;
   left: 250px;
   right: 0;
-  top: 92px;
+  top: 70px;
   bottom: 0;
   width: auto;
   padding: 40px;

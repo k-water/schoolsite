@@ -39,31 +39,29 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      let params = {
+        account: this.loginForm.account,
+        password: this.loginForm.password
+      }
       const self = this;
       const auth = this.make_base_auth(this.account, this.password)
       self.$refs[formName].validate((valid) => {
         if (valid) {
-          axios({
-            method: 'post',
-            url: '/admins/login',
-            data: {
-              account: this.account,
-              password: this.password
-            },
-            headers: {
-              'Authorization': auth,
-            }
-          }).then(res => {
+          axios.post('/admins/login', params).then(res => {
             if(res.data.code === 30006) {
               this.$message.error('账号或密码错误')
               return false
             }else {
               localStorage.setItem('token', res.data.data)
+              localStorage.setItem('username', this.loginForm.account)
               this.$message.success(`登录${res.data.message}`)
               this.$router.push({
-                name: 'Home'
+                name: 'ProList'
               })
             }
+          }).catch(err => {
+            console.log(params)
+            return console.log(err)
           })
         } else {
           this.$message.error('表单验证失败！')
