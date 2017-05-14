@@ -54,7 +54,7 @@
   .container {
     padding-top: 30px;
     width: 1000px;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     .text-1 {
       font-size: 32px;
       color: rgb(255, 68, 0);
@@ -70,13 +70,13 @@
   }
   .nav-row {
     width: 1100px;
+    height: auto;
     margin: 0 auto;
   }
   .nav-container {
     margin: 0;
     padding: 0;
     .nav-menu {
-      margin-top: 20px;
       background: white;
       text-align: center;
       display: flex;

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import axios from 'axios'
 import qs from 'qs'
 import router from '../router/index'
+import ElementUI from 'element-ui'
+Vue.use(ElementUI)
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
@@ -23,9 +25,8 @@ axios.interceptors.request.use((config) => {
 
 // code状态码判断
 axios.interceptors.response.use((res) => {
-  if (res.data.code !== 0) {
-    console.log(res.data.message);
-    return Promise.reject(res);
+  if (res.data.code === 30006) {
+    Vue.prototype.$message.error(res.data.message)
   }
   if (res.data.code === 40000) {
     router.replace({

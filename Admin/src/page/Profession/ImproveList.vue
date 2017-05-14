@@ -2,7 +2,7 @@
   <div id="pro-list">
     <div class="content">
       <div class="add">
-        <el-button type="primary" icon="edit" size="large" @click="jump()">添加专业</el-button>
+        <el-button type="primary" icon="edit" size="large" @click="jump()">添加学历提升专业</el-button>
       </div>
       <el-table
         :data="improveList.content"

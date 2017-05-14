@@ -23,7 +23,7 @@ const router = new Router({
         component: require('../page/Profession/ProfessionList.vue'),
         meta: {
           requireAuth: true
-        }
+        },
       }, {
         path: '/addprofession',
         name: 'AddProfession',

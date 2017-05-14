@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar">
     <el-menu :default-active=activeIndex :router="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" theme="dark">
-      <el-submenu index="/">
+      <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>专业管理</template>
         <el-menu-item-group>
           <el-menu-item index="/">一般专业</el-menu-item>

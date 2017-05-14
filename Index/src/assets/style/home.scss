@@ -43,14 +43,13 @@
           color: #1e50ae !important;
           font: 20px/150% 'Microsoft YaHei';
           position: relative;
-          padding-left: 25px;
           cursor: pointer;
-          &:before {
+          text-align: left !important;
+          &:after {
             content: ">>";
             position: absolute;
             font-weight: 800;
-            top: -2px;
-            left: -5px;
+            top: 0px;
           }
         }
       }

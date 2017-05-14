@@ -48,10 +48,7 @@ export default {
       self.$refs[formName].validate((valid) => {
         if (valid) {
           axios.post('/admins/login', params).then(res => {
-            if(res.data.code === 30006) {
-              this.$message.error('账号或密码错误')
-              return false
-            }else {
+            if(res.data.code === 0) {
               localStorage.setItem('token', res.data.data)
               localStorage.setItem('username', this.loginForm.account)
               this.$message.success(`登录${res.data.message}`)
@@ -60,7 +57,6 @@ export default {
               })
             }
           }).catch(err => {
-            console.log(params)
             return console.log(err)
           })
         } else {
