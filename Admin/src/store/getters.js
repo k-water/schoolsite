@@ -21,3 +21,6 @@ export const jobInfoDetails = state => state.jobInfoDetails
 export const entryInfo = state => state.entryInfo
 export const entryInfoId = state => state.entryInfoId
 export const entryInfoDetails = state => state.entryInfoDetails
+
+// 留言管理
+export const message = state => state.message

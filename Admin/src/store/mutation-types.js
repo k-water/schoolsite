@@ -21,3 +21,6 @@ export const getJobInfoDetails = 'getJobInfoDetails'
 export const getEntryInfo = 'getEntryInfo'
 export const getEntryInfoId = 'getEntryInfoId'
 export const getEntryInfoDetails = 'getEntryInfoDetails'
+
+// 留言管理
+export const getMessage = 'getMessage'

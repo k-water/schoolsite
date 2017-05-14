@@ -159,3 +159,19 @@ export const getEntryInfoDetails = ({ commit }, params) => {
     return console.log(err)
   })
 }
+
+// 留言管理
+export const getMessage = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/visitorMessages',
+    params: {
+      page: params.page,
+      size: params.size
+    }
+  }).then(res => {
+    commit(types.getMessage, res.data.data)
+  }).catch(err => {
+    return console.log(err)
+  })
+}

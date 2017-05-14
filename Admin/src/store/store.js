@@ -27,7 +27,10 @@ const state = {
   // 报名管理
   entryInfo: [],
   entryInfoId: '',
-  entryInfoDetails: []
+  entryInfoDetails: [],
+
+  // 留言管理
+  message: []
 }
 
 const mutations = {
@@ -83,6 +86,11 @@ const mutations = {
   },
   [types.getEntryInfoDetails](state, data) {
     state.entryInfoDetails = data
+  },
+
+  // 留言管理
+  [types.getMessage](state, data) {
+    state.message = data
   }
 }
 
