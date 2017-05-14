@@ -11,12 +11,11 @@
     <el-row class="common-h">
       <el-col :span="6" v-for="(o, index) in 1" :key="o" :offset="index > 0 ? 2 : 0">
         <el-card :body-style="{ padding: '0px' }">
-          <img src="https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true" class="image">
+          <img src="https://oc1gyfe6q.qnssl.com/17-5-14/47574767-file_1494772995459_ae61.jpg" class="image">
           <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
+            <span>学校风光</span>
             <div class="bottom clearfix">
               <time class="time">{{ currentDate }}</time>
-              <el-button type="text" class="button">操作按钮</el-button>
             </div>
           </div>
         </el-card>

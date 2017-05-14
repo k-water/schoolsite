@@ -95,18 +95,18 @@
     data(){
       return {
         itemsImg: [
-          'http://oc1gyfe6q.qnssl.com/17-3-4/44674791-file_1488631602142_4ec5.jpg',
-          'https://oc1gyfe6q.qnssl.com/v2-ec691416744673738828d1f5b343d58d_b.jpg?raw=true',
-          'https://oc1gyfe6q.qnssl.com/0349c49cba94c9aea3f4a47a7e26735f.jpg?raw=true',
-          'https://oc1gyfe6q.qnssl.com/p5kET4.jpg?raw=true'
+          'https://oc1gyfe6q.qnssl.com/17-5-14/39613403-file_1494772964885_9054.jpg',
+          'https://oc1gyfe6q.qnssl.com/17-5-14/47574767-file_1494772995459_ae61.jpg',
+          'https://oc1gyfe6q.qnssl.com/17-5-14/88842216-file_1494773025250_2e00.png',
+          'https://oc1gyfe6q.qnssl.com/17-5-14/60213940-file_1494773068694_139fa.jpg'
         ],
         school: [
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/18474302-file_1494256718241_fec0.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/58463072-file_1494256740231_f999.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/19095252-file_1494256753800_103a3.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/52623529-file_1494256762435_1e65.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/85206866-file_1494773222575_d60e.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/17974486-file_1494773258097_c97d.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/41051145-file_1494773272970_13a3b.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/41051145-file_1494773272970_13a3b.jpg'},
           {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/61074003-file_1494256794249_8417.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/59500119-file_1494256805021_13783.jpg'}
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/63612593-file_1494773353358_e10.jpg'}
         ]
       }
     },

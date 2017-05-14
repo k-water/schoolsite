@@ -14,7 +14,7 @@ Vue.use(Router)
 
 // hash 模式路由
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   base: __dirname,
   routes: [{
     path: '/',
