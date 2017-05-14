@@ -1,6 +1,6 @@
 <template>
   <div id="Home">
-    <el-row style="margin-top:10px">
+    <el-row style="margin-top:10px" class="common-h">
       <el-carousel :interval="3000" trigger="click" height="400px" :autoplay="true">
         <el-carousel-item v-for="item in itemsImg" :key="item">
           <a href="javascript:;">

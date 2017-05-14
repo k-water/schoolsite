@@ -8,20 +8,26 @@
         :default-sort = "{prop: 'date', order: 'descending'}"
         >
         
+        <el-table-column 
+          label="时间"
+          width="180"
+          prop="createdTime">
+        </el-table-column>
+
         <el-table-column
           prop="name"
           label="姓名"
+          width="180"
           sortable>
         </el-table-column>
 
         <el-table-column
           prop="phone"
+          width="180"
           label="手机号码"
           sortable>
         </el-table-column>
-        
-        <el-table-column label="时间" prop="createdTime">
-        </el-table-column>
+      
 
         <el-table-column label="备注" prop="remark">
         </el-table-column>
@@ -44,6 +50,7 @@ export default {
   name: 'Message',
   data() {
     return {
+      currentPage: 1,
       size: 10
     }
   },

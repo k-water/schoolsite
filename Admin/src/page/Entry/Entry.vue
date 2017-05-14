@@ -21,6 +21,12 @@
         </el-table-column>
 
         <el-table-column
+          prop="phone"
+          label="手机号码"
+          sortable>
+        </el-table-column>
+
+        <el-table-column
           prop="haveRead"
           label="是否已阅"
           sortable>
