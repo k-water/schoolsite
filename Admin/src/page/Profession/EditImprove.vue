@@ -78,7 +78,7 @@ export default {
       this.form.title = this.editImproveDetails.title
       this.content = this.editImproveDetails.content
       this.cover = this.editImproveDetails.cover
-    },100)
+    },200)
   },
   computed: {
     ...mapGetters(['editImproveId', 'editImproveDetails']),

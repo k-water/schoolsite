@@ -28,7 +28,7 @@
             <el-tag
               v-text="scope.row.haveRead === 'true' ? '已读' : '未读'"
               :type="scope.row.haveRead === 'true' ? 'success' : 'gray'"
-              close-transition></el-tag>
+             ></el-tag>
           </template>
         </el-table-column>
         

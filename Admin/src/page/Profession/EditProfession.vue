@@ -78,7 +78,7 @@ export default {
       this.form.title = this.editProDetails.title
       this.content = this.editProDetails.content
       this.cover = this.editProDetails.cover
-    },100)
+    },200)
   },
   computed: {
     ...mapGetters(['editProId', 'editProDetails']),
