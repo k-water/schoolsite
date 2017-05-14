@@ -94,4 +94,16 @@ body {
   height: 278px;
   display: block;
 }
+.el-input.is-disabled .el-input__inner {
+  background-color: transparent !important;
+  border-color: #d1dbe5 !important;
+  color: #9E9E9E !important;
+  cursor: not-allowed;
+}
+.el-textarea.is-disabled .el-textarea__inner {
+  background-color: transparent !important;
+  border-color: #d1dbe5 !important;
+  color: #9E9E9E !important;
+  cursor: not-allowed;
+}
 </style>

@@ -19,3 +19,5 @@ export const getJobInfoDetails = 'getJobInfoDetails'
 
 // 报名管理
 export const getEntryInfo = 'getEntryInfo'
+export const getEntryInfoId = 'getEntryInfoId'
+export const getEntryInfoDetails = 'getEntryInfoDetails'

@@ -32,6 +32,14 @@
           </template>
         </el-table-column>
         
+        <el-table-column label="详情" prop="id">
+          <template scope="scope">
+            <el-button
+              size="small"
+              type="primary"
+              @click="handleEdit(scope.$index, scope.row)">查看详情</el-button>
+          </template>
+        </el-table-column>
       </el-table>
       <div class="block">
         <el-pagination
@@ -52,6 +60,7 @@ export default {
   data() {
     return {
       currentPage: 1,
+      size: 10
     }
   },
   created() {
@@ -64,9 +73,18 @@ export default {
     ...mapGetters(['entryInfo'])
   },
   methods: {
-    ...mapActions(['getEntryInfoList']),
-    handleCurrentChange() {
-
+    ...mapActions(['getEntryInfoList', 'getEntryInfoId']),
+    handleCurrentChange(val) {
+      this.getEntryInfoList({
+        page: val - 1,
+        size: this.size
+      })
+    },
+    handleEdit(index, row) {
+      this.getEntryInfoId(row.id)
+      this.$router.push({
+        path: '/entryManageDetails/' + row.id
+      })
     }
   }
 }

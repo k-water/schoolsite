@@ -25,7 +25,9 @@ const state = {
   jobInfoDetails: [],
 
   // 报名管理
-  entryInfo: []
+  entryInfo: [],
+  entryInfoId: '',
+  entryInfoDetails: []
 }
 
 const mutations = {
@@ -75,6 +77,12 @@ const mutations = {
   // 报名管理
   [types.getEntryInfo](state, data) {
     state.entryInfo = data
+  },
+  [types.getEntryInfoId](state, id) {
+    state.entryInfoId = id
+  },
+  [types.getEntryInfoDetails](state, data) {
+    state.entryInfoDetails = data
   }
 }
 

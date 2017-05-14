@@ -144,3 +144,18 @@ export const getEntryInfoList = ({ commit }, params) => {
     return console.log(err)
   })
 }
+
+export const getEntryInfoId = ({ commit }, id) => {
+  commit(types.getEntryInfoId, id)
+}
+
+export const getEntryInfoDetails = ({ commit }, params) => {
+  axios({
+    method: 'get',
+    url: '/entryForms/' + params.id
+  }).then(res => {
+    commit(types.getEntryInfoDetails, res.data.data)
+  }).catch(err => {
+    return console.log(err)
+  })
+}
