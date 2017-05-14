@@ -75,7 +75,7 @@ export default {
     ...mapActions(['getInfoFiveList', 'getEditInfoFiveId']),
     jump() {
       this.$router.push({
-        path: '/addInfoFive/1'
+        name: 'AddInfoFive'
       })
     },
     handleEdit(index, row) {

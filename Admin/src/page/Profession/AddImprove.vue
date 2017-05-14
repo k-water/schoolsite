@@ -10,14 +10,13 @@
 
       <!--图片上传-->
       <el-upload
-        class="upload-demo"
-        drag
-        action="http://112.74.93.190:8080//upload"
+        class="avatar-uploader"
+        action="http://112.74.93.190:8080/upload"
+        :show-file-list="false"
         :on-success="handleSuccess"
-        multiple>
-        <i class="el-icon-upload"></i>
-        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-        <div class="el-upload__tip" slot="tip">上传封面图片</div>
+        >
+        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
 
 
@@ -27,14 +26,13 @@
         </div>
         <div class="quill-editor-example">
         <!-- quill-editor -->
-        <quill-editor ref="myTextEditor"
+          <quill-editor ref="myTextEditor"
                       v-model="content"
-                      :options="editorOption"
-                      @blur="onEditorBlur($event)"
-                      @focus="onEditorFocus($event)"
-                      @ready="onEditorReady($event)">
+                      :options="editorOption">
           </quill-editor>
+          <!--
           <div class="html ql-editor" v-html="content"></div>
+          -->
         </div>
          <el-button class="editor-btn" type="primary" @click="customButtonClick">提交</el-button>
          <el-button class="editor-btn" type="default" @click="reset">重置</el-button>
@@ -59,7 +57,9 @@ export default {
       form: {
         title: ''
       },
+      picList: [],
       labelPosition: 'right',
+      imageUrl: '',
       editorOption: {
         modules: {
           history: {
@@ -80,23 +80,11 @@ export default {
       return this.$refs.myTextEditor.quillEditor
     }
   },
-  mounted() {
-    // setTimeout(() => {
-    //   this.content = '<h1>Example 1 changed!</h1>'
-    // }, 1800)
-  },
   methods: {
-    onEditorBlur(editor) {
-      //console.log('editor blur!', editor)
-    },
-    onEditorFocus(editor) {
-      //console.log('editor focus!', editor)
-    },
-    onEditorReady(editor) {
-      //console.log('editor ready!', editor)
-    },
     handleSuccess(response, file, fileList) {
       this.cover = response.data
+      this.$message.success('封面图片上传成功')
+      this.imageUrl = URL.createObjectURL(file.raw)
     },
     customButtonClick() {
       let params = {

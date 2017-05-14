@@ -71,4 +71,27 @@ body {
 .editor-btn {
   margin-top: 20px !important;
 }
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9 !important;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #20a0ff !important;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 278px;
+  height: 278px;
+  line-height: 278px !important;
+  text-align: center;
+}
+.avatar {
+  width: 278px;
+  height: 278px;
+  display: block;
+}
 </style>

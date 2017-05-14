@@ -16,7 +16,6 @@ const router = new Router({
       component: require('../page/Login/ChangePassword.vue')
     }, {
       path: '/',
-      name: 'Home',
       component: require('../components/Home.vue'),
       meta: {
         requireAuth: true

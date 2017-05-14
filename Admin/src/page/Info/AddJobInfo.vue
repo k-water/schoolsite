@@ -18,7 +18,9 @@
                       v-model="content"
                       :options="editorOption">
           </quill-editor>
+          <!--
           <div class="html ql-editor" v-html="content"></div>
+          -->
         </div>
          <el-button class="editor-btn" type="primary" @click="addJobInfo">提交</el-button>
          <el-button class="editor-btn" type="default" @click="reset">重置</el-button>
