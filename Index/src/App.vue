@@ -3,12 +3,14 @@
     <Headers></Headers>
     <router-view></router-view>
     <Footers></Footers>
+    <Online></Online>
   </div>
 </template>
 
 <script>
 import Headers from './components/Headers'
 import Footers from './components/Footers'
+import Online from './components/Online'
 export default {
   name: 'app',
   data() {
@@ -18,7 +20,8 @@ export default {
   },
   components: {
     Headers,
-    Footers
+    Footers,
+    Online
   }
 }
 </script>
