@@ -51,11 +51,9 @@ export default {
       size: 20,
       type: 1
     })
-    setTimeout(()=>{
-      this.getArtDetails({
-        id: this.artId
-      })
-    },100)
+    this.getArtDetails({
+      id: this.$route.params.id
+    })
   },
 
   computed: {

@@ -33,13 +33,10 @@
       </div>
       <div class="floatDbg"></div>
     </div>
-    <div style="text-align:center;">
-      <p>test<a href="http://www.mycodes.net/" target="_blank">test</a></p>
-    </div>
   </div>
 </template>
 <script>
-      let flag = 0
+let flag = 0
 export default {
   data() {
     return {

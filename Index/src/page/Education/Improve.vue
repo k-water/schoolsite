@@ -35,10 +35,9 @@ export default {
       size: 99999,
       type: 2
     })
-    setTimeout(()=>{
-      this.getImproveDetails({
-      id: this.improveId
-    })},100)
+    this.getImproveDetails({
+      id: this.$route.params.id
+    })
   },
   computed: {
     ...mapGetters(['improveList', 'improveDetails', 'improveId'])

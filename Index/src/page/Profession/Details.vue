@@ -30,12 +30,9 @@ export default {
   },
   async mounted(){
     await this.getProfessionDetails()
-    
-    // 延迟获取Profession页面传过来的pageId
-    setTimeout(()=>{
       this.getDetails({
-      id: this.pageId
-    })},100)
+      id: this.$route.params.id
+    })
   },
   computed: {
     ...mapGetters(['specialList','professionDetails','pageId'])

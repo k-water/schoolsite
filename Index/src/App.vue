@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <Headers></Headers>
-    <router-view></router-view>
-    <Footers></Footers>
+    <transition name="index" mode="out-in" keep-alive>
+      <router-view></router-view>
+    </transition>
     <Online></Online>
+    <Footers></Footers>
   </div>
 </template>
 

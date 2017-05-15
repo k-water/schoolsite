@@ -13,9 +13,9 @@
           <li class="li-first">
             <span>学校动态</span>
           </li>
-          <li v-for="item in sLists" :key="item">
-            <a href="javascript:;"> {{item.title}} </a>
-            <span> {{item.time}} </span>
+          <li v-for="item in jobInfo.content" :key="item" @click="getJobId(item.id)">
+            <router-link :to="'/college/jobInfo/' + item.id"> {{item.title}} </router-link>
+            <span> {{item.postedTime}} </span>
           </li>
         </ul>
       </el-col>
@@ -58,6 +58,7 @@
 </template>
 <script>
   import axios from '../../utils/http.js'
+  import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'Apply',
     data() {
@@ -111,20 +112,6 @@
         }
       }
       return {
-       "sLists": [
-          {
-            "title": "计算机软件技术就业前景", 
-            "time": "2017-05-09"
-          }, 
-          {
-            "title": "计算机软件技术就业前景", 
-            "time": "2017-05-09"
-          }, 
-          {
-            "title": "计算机软件技术就业前景", 
-            "time": "2017-05-09"
-          }
-        ],
         labelPosition: 'left',
         formApply: {
           studentName: '',
@@ -160,7 +147,18 @@
         }
       }
     },
+    created() {
+      this.getJobInfo({
+        page: 0,
+        size: 3,
+        type: 2
+      })
+    },
+    computed: {
+      ...mapGetters(['jobInfo'])
+    },
     methods: {
+      ...mapActions(['getJobInfo']),
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {

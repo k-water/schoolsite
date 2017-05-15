@@ -51,11 +51,9 @@ export default {
       type: 2
     })
 
-    setTimeout(()=>{
-      this.getJobInfoDetails({
-        id: this.jobId
-      })
-    },100)
+    this.getJobInfoDetails({
+      id: this.$route.params.id
+    })
   },
 
   computed: {
