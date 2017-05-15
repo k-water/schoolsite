@@ -66,6 +66,11 @@ export default {
       axios.post('/informations', params).then((res) => {
         if(res.data.code === 0) {
           this.$message.success('添加成功')
+          setTimeout(() => {
+            this.$router.push({
+              name: 'InfoFiveManage'
+            })
+          },1000)
         }else {
           this.$message.error('添加失败')
         }

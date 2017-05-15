@@ -14,8 +14,8 @@
           </div>
         </el-col>
         <el-col :span="8" class="word">
-          <h3>在线留言</h3>
-          <el-form :label-position="labelPosition" label-width="0px" :model="formWord">
+          <h3>在线留言{{formWord.name}}</h3>
+          <el-form :label-position="labelPosition" label-width="0px" :model="formWord" ref="formWord">
             <el-form-item label="">
               <el-input v-model="formWord.name" placeholder="名称"></el-input>
             </el-form-item>
@@ -51,21 +51,50 @@
       }
     },
     methods: {
+      matchPhone() {
+        return !!this.formWord.phone.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)
+      },
       submitForm() {
-        axios.post('/visitorMessages', this.formWord).then(res => {
-          this.$notify({
-            title: res.data.message,
-            message: `提交${res.data.message}`,
-            type: 'success',
-            duration: 2000
-          });
-        }).catch(err => {
-          this.$notify({
-            title: res.data.message,
-            message: `提交${res.data.message}`,
-            type: 'error'
-          });
-        })
+        if(this.formWord.name === '') {
+          this.$notify.error({
+            title: '错误',
+            message: '姓名不能为空'
+          })
+        }else if(this.formWord.phone === '') {
+           this.$notify.error({
+            title: '错误',
+            message: '手机号码不能为空'
+          })
+        }else if(this.matchPhone() === false) {
+          this.$notify.error({
+            title: '错误',
+            message: '手机号码格式错误'
+          })
+        } else if(this.formWord.remark === ''){
+          this.$notify.error({
+            title: '错误',
+            message: '备注不能为空'
+          })
+        }else {
+          axios.post('/visitorMessages', this.formWord).then(res => {
+            this.$notify({
+              title: res.data.message,
+              message: `提交${res.data.message}`,
+              type: 'success',
+              duration: 2000
+            })
+          }).catch(err => {
+            this.$notify({
+              title: res.data.message,
+              message: `提交${res.data.message}`,
+              type: 'error'
+            })
+          })
+          this.formWord.name = ''
+          this.formWord.phone = ''
+          this.formWord.remark = ''          
+          
+        }
       }
     }
   }

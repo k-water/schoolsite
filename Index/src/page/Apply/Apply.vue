@@ -79,7 +79,9 @@
       let checkPhone = (rule,value,callback) => {
         if(!value) {
           return callback(new Error('请填写您的手机号码!'))
-        }else {
+        } else if(this.matchPhone() === false) {
+          return callback(new Error('您的手机号码格式错误!'))
+        } else {
           callback()
         }
       }
@@ -100,7 +102,9 @@
       let checkIdcard = (rule,value,callback) => {
         if(!value) {
           return callback(new Error('请输入您的身份证号码!'))
-        }else {
+        }else if (this.matchIdCard() === false) {
+          return callback(new Error('请输入您的身份证号码格式错误!'))
+        } else {
           callback()
         }
       }
@@ -158,6 +162,12 @@
       ...mapGetters(['jobInfo'])
     },
     methods: {
+      matchPhone() {
+        return !!this.formApply.phone.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)
+      },
+      matchIdCard() {
+        return !!this.formApply.idCard.match(/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/)
+      },
       ...mapActions(['getJobInfo']),
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
@@ -168,28 +178,31 @@
                 message: `提交${res.data.message}`,
                 type: 'success',
                 duration: 2000
-              });
+              })
             }).catch(err => {
               this.$notify({
                 title: res.data.message,
                 message: `提交${res.data.message}`,
                 type: 'success',
                 duration: 2000
-              });
+              })
             })
+            setTimeout(() => {
+              this.$refs[formName].resetFields()
+            }, 200)
           } else {
             this.$notify({
               title: '错误',
               message: `表单验证失败`,
               type: 'error',
               duration: 2000
-            });
+            })
             return false
           }
         })
       },
       resetForm(formName) {
-        this.$refs[formName].resetFields();
+        this.$refs[formName].resetFields()
       }
     }
   }

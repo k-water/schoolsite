@@ -83,19 +83,34 @@ export default {
       })
     },
     handleDelete(index, row) {
-      axios({
-        method: 'delete',
-        url: '/subjects/' + row.id
-      }).then(res => {
-        if(res.data.code === 0) {
-          this.$message.success('删除成功')
-        }else {
-          this.$message.error('删除失败')
-        }
-      }).catch(err => {
-        return console.log(err)
-      })
-      this.improveList.content.splice(index, 1)
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        axios({
+          method: 'delete',
+          url: '/subjects/' + row.id
+        }).then(res => {
+          if(res.data.code === 0) {
+            this.$message.success('删除成功')
+          }else {
+            this.$message.error('删除失败')
+          }
+        }).catch(err => {
+          return console.log(err)
+        })
+        this.improveList.content.splice(index, 1)
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });          
+      });
     },
 
     handleSizeChange(val) {

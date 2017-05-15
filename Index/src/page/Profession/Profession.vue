@@ -13,7 +13,7 @@
         <section>
           <figure>
             <a href="javascript:;">
-              <img :src=item.cover alt="">
+              <img :src=item.cover alt="" style="width: 291px; height: 229px">
             </a>
             <figcaption> {{item.title}} </figcaption>
           </figure>

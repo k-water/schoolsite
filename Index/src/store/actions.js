@@ -24,7 +24,9 @@ export const getProfessionDetails = ({ commit }) => {
     method: 'get',
     url: '/subjects',
     params: {
-      size: 999
+      page: 0,
+      size: 9999,
+      type: 1
     }
   }).then((res) => {
     commit(types.professionList, res.data.data)

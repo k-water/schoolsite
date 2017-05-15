@@ -96,6 +96,11 @@ export default {
       axios.post('/subjects', params).then((res) => {
         if(res.data.code === 0) {
           this.$message.success('添加成功')
+          setTimeout(() => {
+            this.$router.push({
+              name: 'ImproveList'
+            })
+          }, 1000)
         }else {
           this.$message.error('添加失败')
         }

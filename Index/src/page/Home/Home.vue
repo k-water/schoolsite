@@ -39,7 +39,7 @@
        <el-col :span="7" v-for="item in specialList.content" :key="item">
          <section>
             <figure>
-              <img :src=item.cover alt="">
+              <img :src=item.cover alt="" style="width: 291px; height: 229px">
               <figcaption> {{item.title}} </figcaption>
             </figure>
             <article>

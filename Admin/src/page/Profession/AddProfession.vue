@@ -8,21 +8,6 @@
         </el-form-item>
       </el-form>
 
-      <!--图片上传-->
-      <!--
-      <el-upload
-        action="http://112.74.93.190:8080/upload"
-        list-type="picture-card"
-        :on-preview="handlePictureCardPreview"
-        :on-success="handleSuccess">
-        <i class="el-icon-plus"></i>
-        <div class="el-upload__tip" slot="tip">上传封面图片</div>
-      </el-upload>
-      <el-dialog v-model="dialogVisible" size="tiny">
-        <img width="100%" :src="dialogImageUrl" alt="">
-      </el-dialog>
-      -->
-
       <el-upload
         class="avatar-uploader"
         action="http://112.74.93.190:8080/upload"
@@ -106,6 +91,11 @@ export default {
       axios.post('/subjects', params).then((res) => {
         if(res.data.code === 0) {
           this.$message.success('添加成功')
+          setTimeout(() => {
+            this.$router.push({
+              name: 'ProList'
+            })
+          }, 1000)
         }else {
           this.$message.error('添加失败')
         }
