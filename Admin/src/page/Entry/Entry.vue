@@ -32,8 +32,8 @@
           sortable>
           <template scope="scope">
             <el-tag
-              v-text="scope.row.haveRead === 'true' ? '已读' : '未读'"
-              :type="scope.row.haveRead === 'true' ? 'success' : 'gray'"
+              v-text="scope.row.haveRead == true ? '已读' : '未读'"
+              :type="scope.row.haveRead == true ? 'success' : 'gray'"
              ></el-tag>
           </template>
         </el-table-column>
@@ -74,6 +74,7 @@ export default {
       page: 0,
       size: 10
     })
+    console.log(this.entryInfo.content)
   },
   computed: {
     ...mapGetters(['entryInfo'])
