@@ -26,7 +26,7 @@
          <header>
           <h2>{{jobDetails.title}}</h2>
           <span>文章发布于: <em>{{jobDetails.postedTime}}</em></span>
-          <span>浏览次数: <em>{{jobDetails.readCount}}</em></span>
+          <span>浏览次数: <em>{{jobDetails.pageView}}</em></span>
         </header>
         <div v-html="jobDetails.content" class="content"></div>
       </el-col>

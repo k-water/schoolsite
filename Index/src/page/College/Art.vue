@@ -26,7 +26,7 @@
         <header>
           <h2>{{artDetails.title}}</h2>
           <span>文章发布于: <em>{{artDetails.postedTime}}</em></span>
-          <span>浏览次数: <em>{{artDetails.readCount}}</em></span>
+          <span>浏览次数: <em>{{artDetails.pageView}}</em></span>
         </header>
         <div v-html="artDetails.content" class="content"></div>
       </el-col>
