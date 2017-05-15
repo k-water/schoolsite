@@ -2,9 +2,9 @@
   <div id="editprofession">
      <div class="content">
       <h1>一般专业修改页面</h1>
-      <el-form :label-position="labelPosition" label-width="80px" :model="form">
+      <el-form :label-position="labelPosition" label-width="80px">
         <el-form-item label="文章标题">
-          <el-input v-model="form.title"></el-input>
+          <el-input v-model="editProDetails.title"></el-input>
         </el-form-item>
       </el-form>
 
@@ -14,7 +14,6 @@
         action="http://112.74.93.190:8080/upload"
         :show-file-list="false"
         :on-success="handleSuccess"
-        :on-preview="handlePictureCardPreview"
         >
         <img v-if="imageUrl" :src="imageUrl" class="avatar">
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -26,7 +25,7 @@
         <div class="quill-editor-example">
         <!-- quill-editor -->
           <quill-editor ref="myTextEditor"
-                      v-model="content"
+                      v-model="editProDetails.content"
                       :options="editorOption">
           </quill-editor>
           <!--
@@ -49,9 +48,6 @@ export default {
       cover: '',
       content: '',
       type: 1,
-      form: {
-        title: ''
-      },
       picList: [],
       imageUrl: '',
       labelPosition: 'right',
@@ -71,18 +67,9 @@ export default {
     }
   },
   created() {
-    setTimeout(() => {
-      this.getEditProDetails({
-        id: this.editProId
-      })
-    },100)
-  },
-  mounted() {
-    setTimeout(() => {
-      this.form.title = this.editProDetails.title
-      this.content = this.editProDetails.content
-      this.cover = this.editProDetails.cover
-    },200)
+    this.getEditProDetails({
+      id: this.$route.params.id
+    })
   },
   computed: {
     ...mapGetters(['editProId', 'editProDetails']),
@@ -94,12 +81,12 @@ export default {
     ...mapActions(['getEditProDetails']),
     proChange() {
       let params = {
-        title: this.form.title,
-        cover: this.cover,
-        content: this.content,
+        title: this.editProDetails.title,
+        cover: this.editProDetails.cover,
+        content: this.editProDetails.content,
         type: this.type
       }
-      axios.put('/subjects/' + this.editProDetails.id, params).then((res) => {
+      axios.put('/subjects/' + this.$route.params.id, params).then((res) => {
         if(res.data.code === 0) {
           this.$message.success('修改成功')
         }else {
@@ -108,17 +95,18 @@ export default {
       }).catch((err) => {
         return console.log(err)
       })
-      this.content = ''
-      this.form.title = ''
+      this.editProDetails.content = ''
+      this.editProDetails.title = ''
     },
     handleSuccess(response, file, fileList) {
-      this.cover = response.data
+      this.editProDetails.cover = response.data
       this.$message.success('封面图片上传成功')
       this.imageUrl = URL.createObjectURL(file.raw)
     },
     reset() {
-      this.content = ''
-      this.form.title = ''
+      this.editProDetails.content = ''
+      this.editProDetails.title = ''
+      this.editProDetails.cover = ''
     }
   }
 }

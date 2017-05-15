@@ -2,7 +2,7 @@
   <div id="entrydetails">
     <div class="content">
       <el-row>
-        <header>{{this.entryInfoDetails['studentName']}}的个人详情</header>
+        <header>{{entryInfoDetails['studentName']}}的个人详情</header>
 
         <el-form :label-position="labelPosition" label-width="100px" :model="formApply" ref="formApply">
           <el-form-item label="姓名" prop="studentName">
@@ -18,7 +18,7 @@
             <el-input v-model="entryInfoDetails['phone']" placeholder="请填写您的手机号码" disabled></el-input>
           </el-form-item>
           <el-form-item label="籍贯" prop="nativePlace">
-            <el-input v-model="this.entryInfoDetails['nativePlace']" placeholder="请填写您的籍贯" disabled></el-input>
+            <el-input v-model="entryInfoDetails['nativePlace']" placeholder="请填写您的籍贯" disabled></el-input>
           </el-form-item>
           <el-form-item label="毕业中学" prop="graduationSchool">
             <el-input v-model="entryInfoDetails['graduationSchool']" placeholder="请填写您毕业的中学" disabled></el-input>

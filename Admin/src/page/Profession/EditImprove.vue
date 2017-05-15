@@ -2,9 +2,9 @@
   <div id="editimprove">
      <div class="content">
       <h1>学历提升修改页面</h1>
-      <el-form :label-position="labelPosition" label-width="80px" :model="form">
+      <el-form :label-position="labelPosition" label-width="80px">
         <el-form-item label="文章标题">
-          <el-input v-model="form.title"></el-input>
+          <el-input v-model="editImproveDetails.title"></el-input>
         </el-form-item>
       </el-form>
 
@@ -25,7 +25,7 @@
         <div class="quill-editor-example">
         <!-- quill-editor -->
           <quill-editor ref="myTextEditor"
-                      v-model="content"
+                      v-model="editImproveDetails.content"
                       :options="editorOption">
           </quill-editor>
           <!--
@@ -48,9 +48,6 @@ export default {
       cover: '',
       content: '',
       type: 2,
-      form: {
-        title: ''
-      },
       imageUrl: '',
       labelPosition: 'right',
       editorOption: {
@@ -69,18 +66,9 @@ export default {
     }
   },
   created() {
-    setTimeout(() => {
-      this.getEditImproveDetails({
-        id: this.editImproveId
-      })
-    },100)
-  },
-  mounted() {
-    setTimeout(() => {
-      this.form.title = this.editImproveDetails.title
-      this.content = this.editImproveDetails.content
-      this.cover = this.editImproveDetails.cover
-    },200)
+    this.getEditImproveDetails({
+      id: this.$route.params.id
+    })
   },
   computed: {
     ...mapGetters(['editImproveId', 'editImproveDetails']),
@@ -92,12 +80,12 @@ export default {
     ...mapActions(['getEditImproveDetails']),
     improveChange() {
       let params = {
-        title: this.form.title,
-        cover: this.cover,
-        content: this.content,
+        title: this.editImproveDetails.title,
+        cover: this.editImproveDetails.cover,
+        content: this.editImproveDetails.content,
         type: this.type
       }
-      axios.put('/subjects/' + this.editImproveDetails.id, params).then((res) => {
+      axios.put('/subjects/' + this.$route.params.id, params).then((res) => {
         if(res.data.code === 0) {
           this.$message.success('修改成功')
         }else {
@@ -106,17 +94,17 @@ export default {
       }).catch((err) => {
         return console.log(err)
       })
-      this.content = ''
-      this.form.title = ''
+      this.editImproveDetails.content = ''
+      this.editImproveDetails.title = ''
     },
     handleSuccess(response, file, fileList) {
-      this.cover = response.data
+      this.editImproveDetails.cover = response.data
       this.$message.success('封面图片上传成功')
       this.imageUrl = URL.createObjectURL(file.raw)
     },
     reset() {
-      this.content = ''
-      this.form.title = ''
+      this.editImproveDetails.content = ''
+      this.feditImproveDetails.title = ''
     }
   }
 }

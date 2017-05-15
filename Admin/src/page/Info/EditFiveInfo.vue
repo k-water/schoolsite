@@ -2,9 +2,9 @@
   <div id="editfiveinfo">
     <div class="content">
       <h1>五年制大专信息修改页面</h1>
-      <el-form :label-position="labelPosition" label-width="80px" :model="form">
+      <el-form :label-position="labelPosition" label-width="80px">
         <el-form-item label="文章标题">
-          <el-input v-model="form.title"></el-input>
+          <el-input v-model="editInfoFiveDetails.title"></el-input>
         </el-form-item>
       </el-form>
 
@@ -15,7 +15,7 @@
         <div class="quill-editor-example">
         <!-- quill-editor -->
         <quill-editor ref="myTextEditor"
-                      v-model="content"
+                      v-model="editInfoFiveDetails.content"
                       :options="editorOption">
           </quill-editor>
           <!--
@@ -38,9 +38,6 @@ export default {
     return {
       content: '',
       type: 1,
-      form: {
-        title: ''
-      },
       labelPosition: 'right',
       editorOption: {
         modules: {
@@ -61,25 +58,19 @@ export default {
     ...mapGetters(['editInfoFiveId', 'editInfoFiveDetails'])
   },
   created() {
-    setTimeout(() => {
-      this.getEditInfoFiveDetails({
-        id: this.editInfoFiveId
-      })
-    }, 100)
-    setTimeout(() => {
-      this.form.title = this.editInfoFiveDetails.title
-      this.content = this.editInfoFiveDetails.content
-    },200)
+    this.getEditInfoFiveDetails({
+      id: this.$route.params.id
+    })
   },
   methods: {
     ...mapActions(['getEditInfoFiveDetails']),
     changeInfoFive() {
       let params = {
-        title: this.form.title,
-        content: this.content,
+        title: this.editInfoFiveDetails.title,
+        content: this.editInfoFiveDetails.content,
         type: this.type
       }
-      axios.put('/informations/' + this.editInfoFiveId, params).then((res) => {
+      axios.put('/informations/' + this.$route.params.id, params).then((res) => {
         if(res.data.code === 0) {
           this.$message.success('修改成功')
         }else {
@@ -88,12 +79,12 @@ export default {
       }).catch((err) => {
         return console.log(err)
       })
-      this.content = ''
-      this.form.title = ''
+      this.editInfoFiveDetails.content = ''
+      this.editInfoFiveDetails.title = ''
     },
     reset() {
-      this.content = ''
-      this.form.title = ''
+      this.editInfoFiveDetails.content = ''
+      this.editInfoFiveDetails.title = ''
     }
   }
 }

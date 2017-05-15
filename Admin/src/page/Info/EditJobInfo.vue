@@ -2,9 +2,9 @@
   <div id="editjobinfo">
     <div class="content">
       <h1>就业信息修改页面</h1>
-      <el-form :label-position="labelPosition" label-width="80px" :model="form">
+      <el-form :label-position="labelPosition" label-width="80px">
         <el-form-item label="文章标题">
-          <el-input v-model="form.title"></el-input>
+          <el-input v-model="jobInfoDetails.title"></el-input>
         </el-form-item>
       </el-form>
 
@@ -15,7 +15,7 @@
         <div class="quill-editor-example">
         <!-- quill-editor -->
         <quill-editor ref="myTextEditor"
-                      v-model="content"
+                      v-model="jobInfoDetails.content"
                       :options="editorOption">
           </quill-editor>
           <!--
@@ -38,9 +38,6 @@ export default {
     return {
       content: '',
       type: 2,
-      form: {
-        title: ''
-      },
       labelPosition: 'right',
       editorOption: {
         modules: {
@@ -58,15 +55,9 @@ export default {
     }
   },
   created() {
-    setTimeout(() => {
-      this.getJobInfoDetails({
-        id: this.jobInfoId
-      })
-    }, 100)
-    setTimeout(() => {
-      this.form.title = this.jobInfoDetails.title
-      this.content = this.jobInfoDetails.content
-    },200)
+    this.getJobInfoDetails({
+      id: this.$route.params.id
+    })
   },
   computed: {
     ...mapGetters(['jobInfoId', 'jobInfoDetails'])
@@ -75,11 +66,11 @@ export default {
     ...mapActions(['getJobInfoDetails']),
     changeJobInfo() {
       let params = {
-        title: this.form.title,
-        content: this.content,
+        title: this.jobInfoDetails.title,
+        content: this.jobInfoDetails.content,
         type: this.type
       }
-      axios.put('/informations/' + this.jobInfoId, params).then((res) => {
+      axios.put('/informations/' + this.$route.params.id, params).then((res) => {
         if(res.data.code === 0) {
           this.$message.success('修改成功')
         }else {
@@ -88,12 +79,12 @@ export default {
       }).catch((err) => {
         return console.log(err)
       })
-      this.content = ''
-      this.form.title = ''
+      this.jobInfoDetails.content = ''
+      this.jobInfoDetails.title = ''
     },
     reset() {
-      this.content = ''
-      this.form.title = ''
+      this.jobInfoDetails.content = ''
+      this.jobInfoDetails.title = ''
     }
   }
 }
