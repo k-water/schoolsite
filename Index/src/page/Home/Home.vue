@@ -73,7 +73,7 @@
       <el-col :span="14">
         <ul class="list-ul">
           <li class="li-first">
-            <span>校园环境</span>
+            <span>校园风光</span>
           </li>
         </ul>
         <ul class="list-img">
@@ -95,18 +95,17 @@
     data(){
       return {
         itemsImg: [
-          'https://oc1gyfe6q.qnssl.com/17-5-14/39613403-file_1494772964885_9054.jpg',
+          'https://oc1gyfe6q.qnssl.com/17-5-17/24136041-file_1495036544769_d310.jpg',
           'https://oc1gyfe6q.qnssl.com/17-5-14/47574767-file_1494772995459_ae61.jpg',
-          'https://oc1gyfe6q.qnssl.com/17-5-14/88842216-file_1494773025250_2e00.png',
-          'https://oc1gyfe6q.qnssl.com/17-5-14/60213940-file_1494773068694_139fa.jpg'
+          'https://oc1gyfe6q.qnssl.com/17-5-17/99424986-file_1495036582082_15dc5.jpg'
         ],
         school: [
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/85206866-file_1494773222575_d60e.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/17974486-file_1494773258097_c97d.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/41051145-file_1494773272970_13a3b.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/41051145-file_1494773272970_13a3b.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-8/61074003-file_1494256794249_8417.jpg'},
-          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-14/63612593-file_1494773353358_e10.jpg'}
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-17/14862969-file_1495034664122_fe13.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-17/2855685-file_1495034664006_133ed.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-17/82724947-file_1495034663890_1135d.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-17/85097812-file_1495034663763_b389.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-17/79805456-file_1495034663651_b974.jpg'},
+          {pic: 'https://oc1gyfe6q.qnssl.com/17-5-17/26981023-file_1495034663538_15309.jpg'}
         ]
       }
     },

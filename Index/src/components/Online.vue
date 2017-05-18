@@ -4,34 +4,25 @@
       <a href="javascript:;" title="在线咨询">在线咨询</a>
     </div>
     <div id="floatDivBoxs">
-      <div class="floatDtt">test</div>
+      <div class="floatDtt">申老师</div>
       <div class="floatShadow">
         <ul class="floatDqq">
           <li style="padding-left:0px;">
-            <a target="_blank" href="tencent://message/?uin=1234567890&Site=sc.chinaz.com&Menu=yes">
+            <a target="_blank" href="tencent://message/?uin=352403875&Site=sc.chinaz.com&Menu=yes">
               <div style="width: 39px; height: 44px; float: left">
                 <img src="https://oc1gyfe6q.qnssl.com/17-5-15/59871916-file_1494779743969_47e6.png" width="39" align="absmiddle">
               </div>
-              <span style="color: #000; padding: 5px 0 0 10px">625592890</span>
-            </a>
-          </li>
-          <li style="padding-left:0px;">
-            <a target="_blank" href="tencent://message/?uin=1234567890&Site=sc.chinaz.com&Menu=yes">
-              <div style="width: 39px; height: 44px; float: left">
-                <img src="https://oc1gyfe6q.qnssl.com/17-5-15/59871916-file_1494779743969_47e6.png" width="39" align="absmiddle">
-              </div>
-              <span style="color: #000; padding: 5px 0 0 10px">625592890</span>
+              <span style="color: #000; padding: 5px 0 0 10px">352403875</span>
             </a>
           </li>
         </ul>
-        <div class="floatDtxt">招生</div>
+        <div class="floatDtxt">联系电话</div>
         <div class="floatDtel">
-          <span>13602803974</span>
+          <span>15717481021</span>
         </div>
-        <div style="text-align:center;padding:10px;background:#EBEBEB;"><img src="https://oc1gyfe6q.qnssl.com/17-5-14/19437795-file_1494773147561_a856.png" width="100%"><br>test
+        <div style="text-align:center;padding:10px;background:#EBEBEB;"><img src="https://oc1gyfe6q.qnssl.com/17-5-17/12922047-file_1495034016202_77a4.png" width="100%">
         </div>
       </div>
-      <div class="floatDbg"></div>
     </div>
   </div>
 </template>

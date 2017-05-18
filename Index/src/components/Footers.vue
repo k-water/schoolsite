@@ -3,14 +3,15 @@
     <el-row>
       <div class="footer-info">
         <el-col :span="8" class="left-info">
-          <p>咨询电话：18075194008 谢老师</p>
-          <p>咨询QQ：46549572 咨询微信号：cswlyxch</p>
+          <p>咨询电话：15717481021 申老师</p>
+          <p>咨询QQ：352403875 </p>
+          <p>咨询微信号：xiaohui352403875</p>
           <p style="margin-top:30px">网站备案号：湘ICP备11000169号-6</p>
-          <p>湖南五年制大专招生网 版权所有: ©侵权必究</p>
+          <p>湖南都市职业学院 版权所有: ©侵权必究</p>
         </el-col>
         <el-col :span="8" class="QRcode">
           <div class="QR-img">
-            <img src="https://oc1gyfe6q.qnssl.com/17-5-14/19437795-file_1494773147561_a856.png" alt="">
+            <img src="https://oc1gyfe6q.qnssl.com/17-5-17/12922047-file_1495034016202_77a4.png" alt="">
           </div>
         </el-col>
         <el-col :span="8" class="word">
