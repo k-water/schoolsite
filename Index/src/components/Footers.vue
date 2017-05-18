@@ -6,8 +6,11 @@
           <p>咨询电话：15717481021 申老师</p>
           <p>咨询QQ：352403875 </p>
           <p>咨询微信号：xiaohui352403875</p>
+          <!--
           <p style="margin-top:30px">网站备案号：湘ICP备11000169号-6</p>
+          
           <p>湖南都市职业学院 版权所有: ©侵权必究</p>
+          -->
         </el-col>
         <el-col :span="8" class="QRcode">
           <div class="QR-img">

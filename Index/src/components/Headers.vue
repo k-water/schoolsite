@@ -2,7 +2,7 @@
   <div id="Headers">
     <el-row class="container">
       <el-col :span="12" class="text-1">
-        <p>School Design</p>
+        <p>湖南都市职业学院招生网</p>
       </el-col>
       <el-col :span="12" class="text-2">
         <p>博学笃行，与时俱进</p>

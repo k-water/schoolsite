@@ -1,6 +1,7 @@
 <template>
   <div id="editimprove">
      <div class="content">
+     <el-button type="primary" @click="jump()">返回</el-button>
       <h1>学历提升修改页面</h1>
       <el-form :label-position="labelPosition" label-width="80px">
         <el-form-item label="文章标题">
@@ -105,8 +106,13 @@ export default {
     reset() {
       this.editImproveDetails.content = ''
       this.feditImproveDetails.title = ''
+    },
+    jump() {
+      this.$router.push({
+        name: 'ImproveList'
+      })
     }
-  }
+   }
 }
 </script>
 <style lang="scss">

@@ -74,7 +74,6 @@ export default {
       page: 0,
       size: 10
     })
-    console.log(this.entryInfo.content)
   },
   computed: {
     ...mapGetters(['entryInfo'])

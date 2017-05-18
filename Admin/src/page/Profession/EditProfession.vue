@@ -1,6 +1,7 @@
 <template>
   <div id="editprofession">
      <div class="content">
+     <el-button type="primary" @click="jump()">返回</el-button>
       <h1>一般专业修改页面</h1>
       <el-form :label-position="labelPosition" label-width="80px">
         <el-form-item label="文章标题">
@@ -87,6 +88,7 @@ export default {
         type: this.type
       }
       axios.put('/subjects/' + this.$route.params.id, params).then((res) => {
+        console.log(res.data)
         if(res.data.code === 0) {
           this.$message.success('修改成功')
         }else {
@@ -107,6 +109,11 @@ export default {
       this.editProDetails.content = ''
       this.editProDetails.title = ''
       this.editProDetails.cover = ''
+    },
+    jump() {
+      this.$router.push({
+        name: 'ProList'
+      })
     }
   }
 }

@@ -8,7 +8,7 @@
       <div class="floatShadow">
         <ul class="floatDqq">
           <li style="padding-left:0px;">
-            <a target="_blank" href="tencent://message/?uin=352403875&Site=sc.chinaz.com&Menu=yes">
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=352403875&site=qq&menu=yes">
               <div style="width: 39px; height: 44px; float: left">
                 <img src="https://oc1gyfe6q.qnssl.com/17-5-15/59871916-file_1494779743969_47e6.png" width="39" align="absmiddle">
               </div>

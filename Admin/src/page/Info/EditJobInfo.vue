@@ -1,6 +1,7 @@
 <template>
   <div id="editjobinfo">
     <div class="content">
+      <el-button type="primary" @click="jump()">返回</el-button>
       <h1>就业信息修改页面</h1>
       <el-form :label-position="labelPosition" label-width="80px">
         <el-form-item label="文章标题">
@@ -85,6 +86,11 @@ export default {
     reset() {
       this.jobInfoDetails.content = ''
       this.jobInfoDetails.title = ''
+    },
+    jump() {
+      this.$router.push({
+        name: 'InfoJobManage'
+      })
     }
   }
 }

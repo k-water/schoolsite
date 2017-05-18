@@ -2,6 +2,7 @@
   <div id="entrydetails">
     <div class="content">
       <el-row>
+        <el-button type="primary" @click="jump()">返回</el-button>
         <header>{{entryInfoDetails['studentName']}}的个人详情</header>
 
         <el-form :label-position="labelPosition" label-width="100px" :model="formApply" ref="formApply">
@@ -62,7 +63,12 @@ export default {
     ...mapGetters(['entryInfoDetails', 'entryInfoId'])
   },
   methods: {
-    ...mapActions(['getEntryInfoDetails'])
+    ...mapActions(['getEntryInfoDetails']),
+    jump() {
+      this.$router.push({
+        name: 'EntryManage'
+      })
+    }
   }
 }
 </script>
