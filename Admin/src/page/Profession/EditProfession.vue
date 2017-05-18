@@ -21,7 +21,7 @@
       </el-upload>
       <div>
         <div class="tips">
-          <p>Tips / 点击图片可调整大小</p>
+          <p>Tips / 点击上传封面图片</p>
         </div>
         <div class="quill-editor-example">
         <!-- quill-editor -->
@@ -71,6 +71,9 @@ export default {
     this.getEditProDetails({
       id: this.$route.params.id
     })
+    setTimeout(() => {
+      this.imageUrl = this.editProDetails.cover
+    },100)
   },
   computed: {
     ...mapGetters(['editProId', 'editProDetails']),
@@ -119,5 +122,9 @@ export default {
 }
 </script>
 <style lang="scss">
+.avatar {
+  width: 450px !important;
+  height: 336px !important;
+}
 </style>
 

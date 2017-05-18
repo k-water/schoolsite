@@ -21,7 +21,7 @@
       </el-upload>
       <div>
         <div class="tips">
-          <p>Tips / 点击图片可调整大小</p>
+          <p>Tips / 点击可上传图片</p>
         </div>
         <div class="quill-editor-example">
         <!-- quill-editor -->
@@ -70,6 +70,9 @@ export default {
     this.getEditImproveDetails({
       id: this.$route.params.id
     })
+    setTimeout(()=>{
+      this.imageUrl = this.editImproveDetails.cover
+    },100)
   },
   computed: {
     ...mapGetters(['editImproveId', 'editImproveDetails']),

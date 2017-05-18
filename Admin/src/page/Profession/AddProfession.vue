@@ -20,7 +20,7 @@
 
       <div>
         <div class="tips">
-          <p>Tips / 点击图片可调整大小</p>
+          <p>Tips / 点击上传封面图片</p>
         </div>
         <div class="quill-editor-example">
         <!-- quill-editor -->
