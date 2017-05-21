@@ -28,14 +28,14 @@ axios.interceptors.response.use((res) => {
   if (res.data.code === 30006) {
     Vue.prototype.$message.error(res.data.message)
   }
-  // if (res.data.code === 40000) {
-  //   router.replace({
-  //     path: 'login',
-  //     query: {
-  //       redirect: router.currentRoute.fullPath
-  //     }
-  //   })
-  // }
+  if (res.data.code === 40000) {
+    router.replace({
+      path: 'login',
+      query: {
+        redirect: router.currentRoute.fullPath
+      }
+    })
+  }
   return res;
 }, (error) => {
   console.log("网络异常");

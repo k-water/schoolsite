@@ -44,13 +44,14 @@ export default {
         password: this.loginForm.password
       }
       const self = this;
-      const auth = this.make_base_auth(this.account, this.password)
       self.$refs[formName].validate((valid) => {
         if (valid) {
           axios.post('/admins/login', params).then(res => {
             if(res.data.code === 0) {
+              localStorage.removeItem('token')
               localStorage.setItem('token', res.data.data)
               localStorage.setItem('username', this.loginForm.account)
+              axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
               this.$message.success(`登录${res.data.message}`)
               this.$router.push({
                 name: 'ProList'
@@ -63,12 +64,7 @@ export default {
           this.$message.error('表单验证失败！')
           return false;
         }
-      });
-    },
-    make_base_auth(user, password) {
-      var tok = user + ':' + password;
-      var hash = window.btoa(tok);
-      return "Basic " + hash;
+      })
     }
   }
 }
