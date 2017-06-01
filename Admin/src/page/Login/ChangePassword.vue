@@ -11,7 +11,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-          <el-button @click="resetForm('ruleForm2')">重置</el-button>
+          <el-button @click="resetForm('ruleForm2')">返回</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -85,7 +85,10 @@ export default {
       });
     },
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      this.$router.push({
+        name: 'ProList'
+      })
+      this.$refs[formName].resetFields()
     }
   }
 }

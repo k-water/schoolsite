@@ -1,6 +1,7 @@
 <template>
   <div id="addfiveinfo">
     <div class="content">
+      <el-button type="primary" @click="$router.push({name: 'InfoFiveManage'})">返回</el-button>
       <h1>五年制大专信息添加页面</h1>
       <el-form :label-position="labelPosition" label-width="80px" :model="form">
         <el-form-item label="文章标题">

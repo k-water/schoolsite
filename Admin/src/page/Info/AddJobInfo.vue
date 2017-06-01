@@ -1,6 +1,7 @@
 <template>
   <div id="addjobinfo">
     <div class="content">
+      <el-button type="primary" @click="$router.push({name: 'InfoJobManage'})">返回</el-button>
       <h1>就业信息添加页面</h1>
       <el-form :label-position="labelPosition" label-width="80px" :model="form">
         <el-form-item label="文章标题">

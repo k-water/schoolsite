@@ -1,6 +1,7 @@
 <template>
   <div id="improve">
     <div class="content">
+      <el-button type="primary" @click="$router.push({name: 'ImproveList'})">返回</el-button>
       <h1>学历提升专业添加页面</h1>
       <el-form :label-position="labelPosition" label-width="80px" :model="form">
         <el-form-item label="文章标题">
